@@ -1,0 +1,37 @@
+{
+  "name": "swapthing",
+  "version": "1.0.0",
+  "description": "A Perfect Place for Product Love",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.6",
+    "mysql": "^2.11.1",
+    "sequelize": "^3.23.6",
+    "sequelize-cli": "^2.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MonicaSzabo/SwapThing.git"
+  },
+  "keywords": [
+    "swap",
+    "thing",
+    "products"
+  ],
+  "engines": {
+    "node": "4.4.7"
+  },
+  "author": "Jess Hust, Monica Szabo, Rhea Rivera, Kayla Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MonicaSzabo/SwapThing/issues"
+  },
+  "homepage": "https://github.com/MonicaSzabo/SwapThing#readme"
+}
