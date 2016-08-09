@@ -7,7 +7,8 @@ module.exports = function(sequelize, DataTypes) {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING, 
     email: DataTypes.STRING,
-    password: DataTypes.STRING(40)
+    password: DataTypes.STRING(40), 
+    userImage: DataTypes.STRING
   }, 
     createdAt: {
       allowNull: false, 
