@@ -116,7 +116,7 @@
             </div> 
           </form>
           <div class="modal-footer">
-            <button class="btn waves-effect waves-light left" type="submit" name="action">Sign Up
+            <button class="btn waves-effect waves-light left" type="submit" name="action" id="signUp">Sign Up
             </button>
           </div>
       </div>
@@ -142,7 +142,7 @@
             </div> 
           </form>
           <div class="modal-footer">
-            <button class="btn waves-effect waves-light left" type="submit" name="action">Login
+            <button class="btn waves-effect waves-light left" type="submit" name="action" id="logIn">Login
             </button>
           </div>
       </div>
@@ -169,6 +169,47 @@
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.js"></script>
-       <script src="js/app.js"></script>
+      <script src="js/app.js"></script>
+      <script type="text/javascript">
+
+      $('#signUp').on("click", function() {
+        var userInput = {
+          firstName: $('#first_name').val().trim(),
+          lastName: $('#last_name').val().trim(),
+          email: $('#email').val().trim(),
+          password: $('#password').val().trim()
+          //userImage: $('#THEIDFORTHEUSERURAL').val().trim()
+        }
+
+        var currentURL = window.location.origin;
+
+        $.post(currentURL + '/api/newuser', userInput, function(data) {
+
+          //Have what we want to happen after the user signs up
+
+        });
+
+        return false;
+      });
+
+
+      $('#logIn').on("click", function() {
+        var userInput = {
+          email: $('#email').val().trim(),
+          password: $('#password').val().trim()
+        }
+
+        var currentURL = window.location.origin;
+
+        $.post(currentURL + '/logIn', userInput, function(data) {
+
+          //Somehow check this email and password on the database and see if it's right, then login
+
+        });
+
+        return false;
+      });
+
+      </script>
     </body>
   </html>
