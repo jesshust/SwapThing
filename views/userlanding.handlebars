@@ -1,22 +1,252 @@
-<nav>
-  <div class="nav-wrapper">
-    <a class="brand-logo swap">SwapThing</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-    <li><a class="learnMore">Learn More</a></li>
-    <li><a class="modal-trigger" href="#modal1">Sign Up</a></li>
-    <li><a class="modal-trigger" href="#modal2">Login</a></li>
-    </ul>
-  </div>
-</nav>
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>
+        Get Swapping!
+      </title>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+      <!--CSS-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      
+      <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,600' rel='stylesheet' type='text/css'>
 
-<div class="sidebar">
-	 <div class="col s4 m4">
-	 	<h2>sidebar</h2>
-	 </div>
-</div>
+      <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
 
-<div class="nameplace">
-	<div class="col s8 m2">
-		<h2>Name goes here</h2>
-	</div>
-</div>
+      <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+
+      <link href="css/style2.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+
+    <body>
+
+    <header>
+      <nav class="top-nav">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a class="brand-logo swap">SwapThing</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+            <!-- <li>
+              <div class="input-field">
+                <form>
+                <input id="search" type="search" required>
+                <i class="material-icons">close</i>
+                <label for="search"><i class="material-icons">search</i></label>
+                </form>
+              </div>
+            </li> -->
+
+            <li><a class="modal-trigger" href="#modal3">Manage Swaps</a></li>
+            <li><a class="modal-trigger" href="#modal2"><i class="large material-icons">perm_identity</i></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="container" id="maincontainer">
+        <div class="row">
+
+          <!-- Sidebar Navigation -->
+          <div class="col hide-on-small-only m3 l2">
+            <div class="toc-wrapper pin-top" style="top: 0px;">
+
+              <img src="http://placehold.it/150x150" class="circle responsive-img">
+
+              <!-- <p>TEST</p> -->
+
+              <ul class="links">
+                <li>Manage Swaps</li>
+                <li>Post Product</li>
+                <li>Swap Requests [4]</li>
+                <li>Edit Profile</li>
+                <!-- <li>Link 1</li>
+                <li>Link 2</li>
+                <li>Link 3</li>
+                <li>Link 1</li>
+                <li>Link 2</li>
+                <li>Link 3</li> -->
+
+              </ul>
+
+            </div>
+          </div>
+
+          <!-- Swap Info Area -->
+          <div class="col s12 m9 l10">
+            <div>
+              <!-- NAME here -->
+              <div id="username">
+                <h2>Hello, [Name!]</h2>
+                <hr>
+              </div>
+
+              <!-- Get Swapping TXT -->
+              <div id="toswap">
+                <h5>Get Swapping!</h5>
+              </div>
+
+              <!-- Friends Row -->
+              <div class="row">
+
+                <!-- Card 1 -->
+                <div class="col s12 m3">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="images/guy_profile.jpg">
+                      <span class="card-title">Brian B.</span>
+                    </div>
+                    <div class="card-content">
+                      <p>I am a very simple card. I am good at containing small bits of information.</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">Brian's Stuff</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col s12 m3">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="images/woman_profile.jpeg">
+                      <span class="card-title">Mila S.</span>
+                    </div>
+                    <div class="card-content">
+                      <p>I am a very simple card. I am good at containing small bits of information.</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">Mila's Stuff</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col s12 m3">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="images/friend02.jpg">
+                      <span class="card-title">Alex W.</span>
+                    </div>
+                    <div class="card-content">
+                      <p>I am a very simple card. I am good at containing small bits of information.</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">Alex's Stuff</a>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- Card 4 -->
+                <div class="col s12 m3">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="images/friend_03.jpg">
+                      <span class="card-title">Dee M.</span>
+                    </div>
+                    <div class="card-content">
+                     <p>I am a very simple card. I am good at containing small bits of information.</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">Dee's Stuff</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="swapped">
+                <h5>Swap Requests</h5>
+              </div>
+
+              <!-- Swapped Items -->
+              <div class="row">
+
+                <!-- Card 1 -->
+                <div class="col s12 m3">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="images/measuringcups.jpg">
+                    </div>
+                    <div class="card-content">
+                      <p>Bought an extra set. Like new.</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">This is a link</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col s12 m3">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="images/shampoo_img.jpg">
+                    </div>
+                    <div class="card-content">
+                      <p>Was looking for a new shampoo/conditioner and it just didn't work for me. </p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">This is a link</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col s12 m3">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="images/nikes.jpg">
+                    </div>
+                    <div class="card-content">
+                      <p>A half a size too small! Size 9.5(M)</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">This is a link</a>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- Card 4 -->
+                <div class="col s12 m3">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="images/bike_img.jpg">
+                    </div>
+                    <div class="card-content">
+                     <p>Upgraded to a new bike! Hard to see this go. Vintage 1984 Chesini X Uno.</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">This is a link</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+                    
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </main>
+
+
+
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <!--  <script type="text/javascript" src="public/js/materialize.js"></script>  -->      
+      <!-- <script src="js/app.js"></script> -->
+    </body>
+  </html>
