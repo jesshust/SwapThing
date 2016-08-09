@@ -12,7 +12,6 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
-    userID: DataTypes.INTEGER,
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
@@ -26,8 +25,8 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        var Products = this.sequelize.define('Products', {userID}),
-          Users = this.sequelize.define('Users', {id});
+        var Products = this.sequelize.define('Products', {}),
+          Users = this.sequelize.define('Users', {});
 
         Products.belongsTo(Users);
       }
