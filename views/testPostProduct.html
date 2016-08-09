@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+      <!--CSS-->
+      <link type="text/css" rel="stylesheet" href="public/css/materialize.min.css"  media="screen,projection"/>
+      
+      <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,600' rel='stylesheet' type='text/css'>
+
+      <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+
+      <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+
+      <link href="public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+
+    <body>
+
+    <nav>
+      <div class="nav-wrapper">
+        <a class="brand-logo swap">SwapThing</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="learnMore">Learn More</a></li>
+        <li><a class="modal-trigger" href="#modal3">Post A Prodcut</a></li>
+        <li><a class="modal-trigger" href="#modal2">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+  <!-- Sign Up Modal Structure -->
+    <div id="modal3" class="modal">
+      <div class="modal-content">
+        <h4>Post A Product</h4>
+        <p>Tell us a bit about what you're swapping</p>
+          <form>
+          <div class="row">
+            <div class="input-field col s6">
+                <input id="product_name" type="text" class="validate">
+                <label for="procut_name">Product Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="prodcut_description" type="text" class="validate">
+                <label for="prodcut_description">Product Description</label>
+            </div>
+           </div>
+           <div class="row">
+              <div class="input-field col s12">
+                <input id="imageURL" type="url" class="validate">
+                <label for="imageURL">Input Image URL</label>
+              </div>
+            </div>
+            <form action="#">
+            <h5>Pick one category for your product</h5>
+              <p>
+                <input class="with-gap" name="productType" type="radio" id="beauty"/>
+                <label for="beauty">Beauty/Health</label>
+
+                <input class="with-gap" name="productType" type="radio" id="electronic"/>
+                <label for="electronic">Electronics</label>
+
+                <input class="with-gap" name="productType" type="radio" id="apperal"/>
+                <label for="apperal">Apperal</label>
+              </p>
+              <p>
+                <input class="with-gap" name="productType" type="radio" id="media"/>
+                <label for="media">Media</label>
+
+                <input class="with-gap" name="productType" type="radio" id="house"/>
+                <label for="house">Household Goods</label>
+
+                <input class="with-gap" name="productType" type="radio" id="other"/>
+                <label for="other">Other</label>
+              </p>
+            </form>
+            <br>
+
+            <form action="#">
+            <h5>What condition is your product in?</h5>
+            <h6>1 meaning poor, 5 meaning excellent</h6>
+              <p class="range-field">
+                <input type="range" id="test5" min="1" max="5" step="1" list="steplist"/>
+                <datalist id="steplist">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </datalist>
+              </p>
+            </form>
+
+          </form>
+          <div class="modal-footer">
+            <button class="btn waves-effect waves-light left" type="submit" name="action">Post Your Product
+            </button>
+          </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- Login Modal Structure -->
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <h4>Login to your account</h4>
+        <p>You'll be swapping in minutes!</p>
+          <form>
+           <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">E-mail</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div> 
+          </form>
+          <div class="modal-footer">
+            <button class="btn waves-effect waves-light left" type="submit" name="action">Login
+            </button>
+          </div>
+      </div>
+    </div>
+
+
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="public/js/materialize.js"></script>
+       <script src="public/js/app.js"></script>
+    </body>
+  </html>
