@@ -8,8 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     lastName: DataTypes.STRING, 
     email: DataTypes.STRING,
     password: DataTypes.STRING(40), 
-    userImage: DataTypes.STRING
-  }, 
+    userImage: DataTypes.STRING,
     createdAt: {
       allowNull: false, 
       type: Sequelize.DATE, 

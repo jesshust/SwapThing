@@ -177,15 +177,16 @@
           firstName: $('#first_name').val().trim(),
           lastName: $('#last_name').val().trim(),
           email: $('#email').val().trim(),
-          password: $('#password').val().trim()
-          //userImage: $('#THEIDFORTHEUSERURAL').val().trim()
+          password: $('#password').val().trim(),
+          userImage: "http://FILLER"
         }
 
         var currentURL = window.location.origin;
 
         $.post(currentURL + '/api/newuser', userInput, function(data) {
 
-          //Have what we want to happen after the user signs up
+          //Redirect to userLanding URL
+          //Add user to database
 
         });
 
@@ -201,9 +202,9 @@
 
         var currentURL = window.location.origin;
 
-        $.post(currentURL + '/logIn', userInput, function(data) {
+        $.post(currentURL + '/api/' + userInput.email, function(data) {
 
-          //Somehow check this email and password on the database and see if it's right, then login
+          console.log(data);
 
         });
 
