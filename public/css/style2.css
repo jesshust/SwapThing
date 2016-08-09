@@ -1,0 +1,96 @@
+/* Gradient transparent - color - transparent */
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+
+body {
+	font-family: 'Abel', sans-serif;
+}
+
+#maincontainer{
+	margin-top: 50px;
+
+}
+
+nav .brand-logo {
+  color: white;
+  padding-left: 40px;
+}
+
+
+nav {
+	background-color: #1b998B;
+}
+
+nav ul a {
+	padding-right: 40px;
+}
+
+.header {
+	padding-top: 40px;
+}
+
+footer.page-footer {
+	margin-top: 0px;
+}
+.btn-large {
+	background-color: #E84855;
+}
+
+.btn-large:hover {
+    background-color: #1b998B;
+}
+
+footer.page-footer .footer-copyright {
+	background-color: #2D3047;
+}
+
+.blue {
+    background-color: #1b998B !important;
+}
+
+.pink-bg {
+    background-color: #E84855 !important;
+}
+
+.blueIcon{
+	color: #1b998B !important;
+}
+
+.top-image {
+	height: 650px;
+}
+
+.top-text {
+	padding-top: 125px;
+}
+
+.mid-text {
+	padding-top: 200px;
+}
+
+.modal { 
+	width: 40% !important  
+} 
+
+.swap {
+	font-family: 'Covered By Your Grace', cursive;
+}
+
+.swapTitle {
+	font-family: 'Covered By Your Grace', cursive;
+	font-size: 6.2rem;
+}
+
+#aboutSwap {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+.brand-logo {
+	cursor: pointer;
+}
