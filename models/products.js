@@ -21,7 +21,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       type: Sequelize.DATE,
       defaultValue: Date.now()
-    }
+    },
+    UsersId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {

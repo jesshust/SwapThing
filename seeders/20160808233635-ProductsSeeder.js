@@ -9,12 +9,14 @@ module.exports = {
       imageURL: 'http://findapic.com',
       category: 'Hair Care',
       scaleRating: 3,
+      UsersId: 1
     }, {
       product_name: 'That DVD',
       description: 'Here is where my description would be.',
       imageURL: 'http://findapic.com',
       category: 'Electronics',
       scaleRating: 3,
+      UsersId: 1
     }], {});
   },
 
