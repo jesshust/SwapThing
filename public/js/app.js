@@ -20,3 +20,7 @@ $(document).ready(function(){
         scrollTop: $("#page-footer").offset().top
     }, 900);
 });
+
+$(document).ready(function() {
+    $('select').material_select();
+  });
