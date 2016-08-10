@@ -3,14 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser'); 
 var methodOverride = require('method-override'); 
 var models = require('../models'); 
-
-// var app = express();
-// app.use(require('serve-static')(__dirname + '/../../public'));
-// app.use(require('cookie-parser')());
-// app.use(require('body-parser').urlencoded({ extended: true }));
-// app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+var sha1 = require('sha1'); 
 
 
 router.get('/', function (req, res){
@@ -80,5 +73,6 @@ router.get('/userLanding/:email?', function (req, res){
 // 		res.redirect('/burgers');
 // 	});
 // });
+
 
 module.exports = router;
