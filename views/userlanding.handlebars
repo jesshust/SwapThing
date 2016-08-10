@@ -66,8 +66,8 @@
               <ul class="links">
                 <li>Manage Swaps</li>
                 <li>Post Product</li>
-                <li>Swap Requests [4]</li>
-                <li>Edit Profile</li>
+                <li><a href="#addproduct" class="modal-trigger">Post Product</a></li>
+                <li><a class="torequests">Swap Requests [4]</a></li>
                 <!-- <li>Link 1</li>
                 <li>Link 2</li>
                 <li>Link 3</li>
@@ -101,7 +101,7 @@
                 <div class="col s12 m3">
                   <div class="card">
                     <div class="card-image">
-                      <img src="images/guy_profile.jpg">
+                      <img src="../images/guy_profile.jpg">
                       <span class="card-title">Brian B.</span>
                     </div>
                     <div class="card-content">
@@ -117,7 +117,7 @@
                 <div class="col s12 m3">
                   <div class="card">
                     <div class="card-image">
-                      <img src="images/woman_profile.jpeg">
+                      <img src="../images/woman_profile.jpeg">
                       <span class="card-title">Mila S.</span>
                     </div>
                     <div class="card-content">
@@ -133,7 +133,7 @@
                 <div class="col s12 m3">
                   <div class="card">
                     <div class="card-image">
-                      <img src="images/friend02.jpg">
+                      <img src="../images/friend02.jpg">
                       <span class="card-title">Alex W.</span>
                     </div>
                     <div class="card-content">
@@ -150,7 +150,7 @@
                 <div class="col s12 m3">
                   <div class="card">
                     <div class="card-image">
-                      <img src="images/friend_03.jpg">
+                      <img src="../images/friend_03.jpg">
                       <span class="card-title">Dee M.</span>
                     </div>
                     <div class="card-content">
@@ -174,7 +174,7 @@
                 <div class="col s12 m3">
                   <div class="card">
                     <div class="card-image">
-                      <img src="images/measuringcups.jpg">
+                      <img src="../images/measuringcups.jpg">
                     </div>
                     <div class="card-content">
                       <p>Bought an extra set. Like new.</p>
@@ -189,7 +189,7 @@
                 <div class="col s12 m3">
                   <div class="card">
                     <div class="card-image">
-                      <img src="images/shampoo_img.jpg">
+                      <img src="../images/shampoo_img.jpg">
                     </div>
                     <div class="card-content">
                       <p>Was looking for a new shampoo/conditioner and it just didn't work for me. </p>
@@ -204,7 +204,7 @@
                 <div class="col s12 m3">
                   <div class="card">
                     <div class="card-image">
-                      <img src="images/nikes.jpg">
+                      <img src="../images/nikes.jpg">
                     </div>
                     <div class="card-content">
                       <p>A half a size too small! Size 9.5(M)</p>
@@ -220,7 +220,7 @@
                 <div class="col s12 m3">
                   <div class="card">
                     <div class="card-image">
-                      <img src="images/bike_img.jpg">
+                      <img src="../images/bike_img.jpg">
                     </div>
                     <div class="card-content">
                      <p>Upgraded to a new bike! Hard to see this go. Vintage 1984 Chesini X Uno.</p>
@@ -242,11 +242,84 @@
     </main>
 
 
+    <!-- Modals -->
+     <div id="addproduct" class="modal">
+      <div class="modal-content ">
+        <h4>Post A Product</h4>
+        <p>Tell us a bit about what you're swapping</p>
+          <form>
+          <div class="row">
+            <div class="input-field col s6">
+                <input id="product_name" type="text" class="validate">
+                <label for="procut_name">Product Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="prodcut_description" type="text" class="validate">
+                <label for="prodcut_description">Product Description</label>
+            </div>
+           </div>
+           <div class="row">
+              <div class="input-field col s12">
+                <input id="imageURL" type="url" class="validate">
+                <label for="imageURL">Input Image URL</label>
+              </div>
+            </div>
+            <form action="#">
+            <h5>Pick one category for your product</h5>
+              <p>
+                <input class="with-gap" name="productType" type="radio" id="beauty"/>
+                <label for="beauty">Beauty/Health</label>
 
+                <input class="with-gap" name="productType" type="radio" id="electronic"/>
+                <label for="electronic">Electronics</label>
+
+                <input class="with-gap" name="productType" type="radio" id="apperal"/>
+                <label for="apperal">Apperal</label>
+
+                <input class="with-gap" name="productType" type="radio" id="media"/>
+                <label for="media">Media</label>
+
+                <input class="with-gap" name="productType" type="radio" id="house"/>
+                <label for="house">Household Goods</label>
+
+                <input class="with-gap" name="productType" type="radio" id="other"/>
+                <label for="other">Other</label>
+              </p>
+            </form>
+            <br>
+
+            <form action="#">
+            <h5>What condition is your product in?</h5>
+              <p>
+                <input class="with-gap" name="productType" type="radio" id="1"/>
+                <label for="1">Heavily used</label>
+
+                <input class="with-gap" name="productType" type="radio" id="2"/>
+                <label for="2">More than average use</label>
+
+                <input class="with-gap" name="productType" type="radio" id="3"/>
+                <label for="3">Used from time to time</label>
+
+                <input class="with-gap" name="productType" type="radio" id="4"/>
+                <label for="4">Hardly used</label>
+
+                <input class="with-gap" name="productType" type="radio" id="5"/>
+                <label for="5">Basically new</label> 
+              </p>
+            </form>
+            <br>
+
+          </form>
+          <div class="modal-footer">
+            <button class="btn waves-effect waves-light left" type="submit" name="action">Post Your Product
+            </button>
+          </div>
+      </div>
+    </div>
 
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <!--  <script type="text/javascript" src="public/js/materialize.js"></script>  -->      
-      <!-- <script src="js/app.js"></script> -->
+      <script type="text/javascript" src="../js/materialize.js"></script>      
+      <script src="../js/app.js"></script>
     </body>
   </html>

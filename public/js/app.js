@@ -24,3 +24,9 @@ $(document).ready(function(){
 $(document).ready(function() {
     $('select').material_select();
   });
+
+$(".torequests").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#swapped").offset().top
+    }, 900);
+});
