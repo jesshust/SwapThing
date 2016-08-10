@@ -4,6 +4,14 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override'); 
 var models = require('../models'); 
 
+// var app = express();
+// app.use(require('serve-static')(__dirname + '/../../public'));
+// app.use(require('cookie-parser')());
+// app.use(require('body-parser').urlencoded({ extended: true }));
+// app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+// app.use(passport.initialize());
+// app.use(passport.session());
+
 
 router.get('/', function (req, res){
 	models.Users.findAll().then(function (data) {
@@ -18,27 +26,34 @@ router.post('/logIn', function(req, res){
 });
 
 
-router.post('/api/:userID?', function(req, res){
+// router.post('/api/:userID?', function(req, res){
 
-	var currentUser = req.params.userID;
+// 	var currentUser = req.params.userID;
 
-	console.log(currentUser);
+// 	console.log(currentUser);
 
-	res.json(currentUser);
-})
+// 	res.json(currentUser);
+// })
 
 
 router.post('/api/newuser', function(req, res) {
-	models.Users.create({firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, password: req.body.password, userImage: req.body.userImage}).then(function() {
-		res.redirect('/userLanding'); 
+	var currentUser = {
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		email: req.body.email,
+		password: req.body.password,
+		userImage: req.body.userImage
+	};
+
+	models.Users.create(currentUser).then(function() {
+		res.json(currentUser);
 	}); 
 });
 
 router.get('/userLanding', function (req, res){
-	console.log(req);
-	console.log(res);
-
-	models.Users.findOne().then(function (data) {
+	console.log(req.body + "this is req");
+	console.log(res.body + "this is res");
+	models.Users.findAll().then(function (data) {
 		res.render('userlanding', {Users : data});
 	});
 });

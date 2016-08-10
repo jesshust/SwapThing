@@ -178,15 +178,20 @@
           lastName: $('#last_name').val().trim(),
           email: $('#email').val().trim(),
           password: $('#password').val().trim(),
-          userImage: "http://FILLER"
+          userImage: "https://www.mautic.org/media/images/default_avatar.png"
         }
 
         var currentURL = window.location.origin;
 
         $.post(currentURL + '/api/newuser', userInput, function(data) {
 
-          //Redirect to userLanding URL
-          //Add user to database
+          console.log(data);
+
+          $('#modal1').closeModal();
+
+          //this needs to send the user to the right page, the userlanding
+          window.location.replace("/userLanding");
+
 
         });
 
