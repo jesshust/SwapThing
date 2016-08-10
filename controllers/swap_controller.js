@@ -12,12 +12,6 @@ router.get('/', function (req, res){
 	});
 });
 
-router.post('/logIn', function(req, res){
-	models.Users.findOne().then(function (data) {
-		res.render('index', {Users : data}); 
-	}); 
-});
-
 
 // router.post('/api/:userID?', function(req, res){
 
@@ -73,6 +67,18 @@ router.get('/userLanding/:email?', function (req, res){
 // 		res.redirect('/burgers');
 // 	});
 // });
+
+
+//Monica's Half
+//======================================================================================
+//Jess's Half
+
+
+router.post('/logIn', function(req, res){
+	models.Users.findOne().then(function (data) {
+		res.render('index', {Users : data}); 
+	}); 
+});
 
 
 module.exports = router;
