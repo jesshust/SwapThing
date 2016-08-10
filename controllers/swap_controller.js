@@ -12,17 +12,6 @@ router.get('/', function (req, res){
 	});
 });
 
-
-// router.post('/api/:userID?', function(req, res){
-
-// 	var currentUser = req.params.userID;
-
-// 	console.log(currentUser);
-
-// 	res.json(currentUser);
-// })
-
-
 router.post('/api/newuser', function(req, res) {
 	var currentUser = {
 		firstName: req.body.firstName,
@@ -34,6 +23,22 @@ router.post('/api/newuser', function(req, res) {
 
 	models.Users.create(currentUser).then(function() {
 		res.json(currentUser);
+	}); 
+});
+
+router.post('/api/newproduct', function(req, res) {
+	var currentProduct = {
+		product_name: req.body.product_name,
+        description: req.body.description,
+        imageURL: req.body.imageURL,
+        category: req.body.category,
+        scaleRating: req.body.scaleRating,
+        UsersId: req.body.UsersId,
+        swapStatus: req.body.swapStatus
+	};
+
+	models.Products.create(currentProduct).then(function() {
+		res.json(currentProduct);
 	}); 
 });
 

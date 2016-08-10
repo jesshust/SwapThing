@@ -292,11 +292,11 @@
           <div class="row">
             <div class="input-field col s6">
                 <input id="product_name" type="text" class="validate">
-                <label for="procut_name">Product Name</label>
+                <label for="product_name">Product Name</label>
             </div>
             <div class="input-field col s6">
-                <input id="prodcut_description" type="text" class="validate">
-                <label for="prodcut_description">Product Description</label>
+                <input id="product_description" type="text" class="validate">
+                <label for="product_description">Product Description</label>
             </div>
            </div>
            <div class="row">
@@ -308,22 +308,22 @@
             <form action="#">
             <h5>Pick one category for your product</h5>
               <p>
-                <input class="with-gap" name="productType" type="radio" id="beauty"/>
+                <input class="with-gap" name="category" type="radio" id="beauty" value="Beauty/Health"/>
                 <label for="beauty">Beauty/Health</label>
 
-                <input class="with-gap" name="productType" type="radio" id="electronic"/>
+                <input class="with-gap" name="category" type="radio" id="electronic" value="Electronics"/>
                 <label for="electronic">Electronics</label>
 
-                <input class="with-gap" name="productType" type="radio" id="apperal"/>
-                <label for="apperal">Apperal</label>
+                <input class="with-gap" name="category" type="radio" id="apparel" value="Apparel"/>
+                <label for="apparel">Apparel</label>
 
-                <input class="with-gap" name="productType" type="radio" id="media"/>
+                <input class="with-gap" name="category" type="radio" id="media" value="Media"/>
                 <label for="media">Media</label>
 
-                <input class="with-gap" name="productType" type="radio" id="house"/>
+                <input class="with-gap" name="category" type="radio" id="house" value="Household Goods"/>
                 <label for="house">Household Goods</label>
 
-                <input class="with-gap" name="productType" type="radio" id="other"/>
+                <input class="with-gap" name="category" type="radio" id="other" value="Other"/>
                 <label for="other">Other</label>
               </p>
             </form>
@@ -332,19 +332,19 @@
             <form action="#">
             <h5>What condition is your product in?</h5>
               <p>
-                <input class="with-gap" name="productType" type="radio" id="1"/>
+                <input class="with-gap" name="condition" type="radio" id="1" value="1"/>
                 <label for="1">Heavily used</label>
 
-                <input class="with-gap" name="productType" type="radio" id="2"/>
+                <input class="with-gap" name="condition" type="radio" id="2" value="2"/>
                 <label for="2">More than average use</label>
 
-                <input class="with-gap" name="productType" type="radio" id="3"/>
+                <input class="with-gap" name="condition" type="radio" id="3" value="3"/>
                 <label for="3">Used from time to time</label>
 
-                <input class="with-gap" name="productType" type="radio" id="4"/>
+                <input class="with-gap" name="condition" type="radio" id="4" value="4"/>
                 <label for="4">Hardly used</label>
 
-                <input class="with-gap" name="productType" type="radio" id="5"/>
+                <input class="with-gap" name="condition" type="radio" id="5" value="5"/>
                 <label for="5">Basically new</label> 
               </p>
             </form>
@@ -352,7 +352,7 @@
 
           </form>
           <div class="modal-footer">
-            <button class="btn waves-effect waves-light left" type="submit" name="action">Post Your Product
+            <button class="btn waves-effect waves-light left" type="submit" name="action" id="postProduct">Post Your Product
             </button>
           </div>
       </div>
@@ -393,6 +393,36 @@
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="../js/materialize.js"></script>
-       <script src="../js/app.js"></script>
+      <script src="../js/app.js"></script>
+      <script type="text/javascript">
+          $('#postProduct').on("click", function() {
+          var userInput = {
+            product_name: $('#product_name').val().trim(),
+            description: $('#product_description').val().trim(),
+            imageURL: $('#imageURL').val().trim(),
+            category: $('input[name="category"]:checked').val(),
+            scaleRating: $('input[name="condition"]:checked').val().trim(),
+            UsersId: 1,
+            swapStatus: false
+          }
+
+          var currentURL = window.location.origin;
+
+          $.post(currentURL + '/api/newproduct', userInput, function(data) {
+
+            console.log(data);
+
+            $('#postAProduct').closeModal();
+
+            //this needs to send the user to the right page, the userlanding
+            window.location.replace("/users/" + data.email);
+
+
+          });
+
+        return false;
+      });
+
+      </script>
     </body>
   </html>
