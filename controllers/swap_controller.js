@@ -50,10 +50,12 @@ router.post('/api/newuser', function(req, res) {
 	}); 
 });
 
-router.get('/userLanding', function (req, res){
-	console.log(req.body + "this is req");
-	console.log(res.body + "this is res");
+router.get('/userLanding/:email?', function (req, res){
+
+	var currentUserEmail = req.params.email;
+
 	models.Users.findAll().then(function (data) {
+		console.log(data);
 		res.render('userlanding', {Users : data});
 	});
 });
