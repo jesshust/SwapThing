@@ -2,6 +2,16 @@ body {
 	font-family: 'Abel', sans-serif;
 }
 
+hr {
+   border: 0;
+   height: 1px;
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+#maincontainer{
+	margin-top: 50px;
+}
+
 nav .brand-logo {
   color: white;
   padding-left: 40px;
@@ -40,6 +50,10 @@ footer.page-footer .footer-copyright {
 
 .pink-bg {
     background-color: #E84855 !important;
+}
+
+.pink-text {
+    color: #E84855 !important;
 }
 
 .blueIcon{
@@ -92,3 +106,18 @@ footer.page-footer .footer-copyright {
 	margin-top: 50px;
 }
 
+blockquote {
+	border-left: 5px solid #1b998B;
+	margin: 10px;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+    color: #E84855;
+    margin-right: 20px;
+    transition: color .3s ease;
+    text-transform: none;
+}
+
+a:hover {
+	transition: color .3s ease;
+}
