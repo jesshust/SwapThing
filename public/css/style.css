@@ -83,3 +83,12 @@ footer.page-footer .footer-copyright {
 #postAProduct { 
 	width: 60% !important  
 } 
+
+.swapArrow {
+	padding-top: 50px;
+}
+
+.select-wrapper input input.select-dropdown {
+	margin-top: 50px;
+}
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+      <!--CSS-->
+      <link type="text/css" rel="stylesheet" href="public/css/materialize.min.css"  media="screen,projection"/>
+      
+      <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,600' rel='stylesheet' type='text/css'>
+
+      <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+
+      <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+
+      <link href="public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+
+    <body>
+
+    <nav>
+      <div class="nav-wrapper">
+        <a class="brand-logo swap">SwapThing</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="modal-trigger" href="#swapAProduct">Swap A Prodcut</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+  <!-- Swap Modal Structure -->
+  <div id="swapAProduct" class="modal">
+    <div class="modal-content ">
+      <h4>Get your swap on!</h4>
+      <br>
+          <div class="row">
+            <div class="col s12 l5">
+            <img src= "http://placehold.it/150x150.com" class="responsive-img">
+            </div>
+            <div class="icon-block col s12 l2">
+              <h3 class="center"><i class="material-icons medium blueIcon swapArrow">swap_calls</i></h3>
+          </div>
+          <div class="input-field col s12 l5">
+            <select class="icons">
+              <option value="" selected>What's it worth trading for?</option>
+              <option value="1" data-icon="images/sample-1.jpg" class="left circle data-icon">example 1</option>
+              <option value="2" data-icon="images/office.jpg" class="left circle data-icon">example 2</option>
+              <option value="3" data-icon="images/yuna.jpg" class="left circle data-icon">example 3</option>
+            </select>
+          </div>
+          </div>
+          <div class="row">
+          <div class="modal-footer">
+              <button class="btn waves-effect waves-light right" type="submit" name="action">Make a Swap!
+              </button>
+          </div>
+          </div>
+    </div>
+  </div>
+
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="public/js/materialize.js"></script>
+       <script src="public/js/app.js"></script>
+    </body>
+  </html>
