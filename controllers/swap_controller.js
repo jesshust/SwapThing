@@ -37,13 +37,13 @@ router.post('/api/newuser', function(req, res) {
 	}); 
 });
 
-router.get('/userLanding/:email?', function (req, res){
+router.get('/users/:email?', function (req, res){
 
 	var currentUserEmail = req.params.email;
 
 	models.Users.findAll().then(function (data) {
 		models.Products.findAll().then(function (data2) {
-			res.render('userlanding', {Users : data, Products : data2});
+			res.render('userView', {Users : data, Products : data2});
 		});
 	});
 });
