@@ -78,4 +78,17 @@ router.get('/userLanding', function (req, res){
 // 	});
 // });
 
+
+var passport = require('passport'); 
+var Strategy = require('passport-local').Strategy; 
+
+passport.use(new Strategy(function(username, password, cb) {
+	users.users.findByUsername(username, function(err, user) {
+		if(err) {return cb(err); }
+		if(!user) {return cb(null, false); }
+		if(user.password != password){ return cb(null, false); }
+		return cb(null, user); 
+	}); 
+})); 
+
 module.exports = router;
