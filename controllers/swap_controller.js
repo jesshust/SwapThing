@@ -95,34 +95,48 @@ router.get('/users/:id?', function(req, res){
 
 var session = require('express-session'); 
 var flash = require('connect-flash'); 
-//session
-router.use(session({
-	secret: 'keyboard cat', 
-	saveUninitialized: true, 
-	cookie: { secure: true }, 
-app.use(flash());
-app.use(function(req, res, next){
-	res.locals.messages = req.flash(); 
-		next(); 
-	});  
 
-})); 
+//session
+
+// app.use(flash());
+// app.use(session({ secret: 'keyboard'}));
+// // router.use(session({
+// // 	secret: 'keyboard cat', 
+// // 	saveUninitialized: true, 
+// // 	cookie: { secure: true }, 
+// // app.use(flash());
+// app.use(function(req, res, next){
+// 	res.locals.messages = req.flash(); 
+// 		next(); 
+// 	});  
+
 
 //create login
 
 
-//prompt user to login
+//prompt user to create account login
+router.get('/login', function(req, res){
+	var email = req.body.email; 
+	var password = req.body.password; 
+	if (email === req.body.email && password === req.body.password){
+		alert ('Account Created');
+		res.redirect('users:id?');  
+	} else {
+		alert('Must enter an email address and password'); 
+		res.render('/')
+	}
+}); 
 
 router.post('/login', function(req, res){
 	var email = req.body.email; 
 	var password = req.body.password; 
-	if(userID === 'jessicakhust@gmail.com' && password === 'Popcorn1'){
-		req.flash('messages', { 'success' : 'Login Success' }); 
+	if(email === 'jessicakhust@gmail.com' && password === 'Popcorn1'){
+		alert('Login Success'); 
 		res.redirect('/users/1'); 
+		console.log('Logged In')
 	} else {
-		req.flash('messages', { 'error' : 'Invalid username or password'}); 
-		res.locals.messages = req.flash(); 
-		res.render('login', { title : 'Login'}); 
+		alert('Invalid username or password'); 
+		res.render('/')
 	}
 }); 
 
