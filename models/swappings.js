@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Swapping = sequelize.define('Swapping', {
+  var Swapping = sequelize.define('Swappings', {
     firstPersonID: DataTypes.INTEGER,
     firstPersonProductID: DataTypes.INTEGER,
     secondPersonID: DataTypes.INTEGER,
@@ -22,5 +22,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return Swapping;
+  return Swappings;
 };

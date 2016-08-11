@@ -43,7 +43,6 @@ router.post('/api/newproduct', function(req, res) {
 	}); 
 });
 
-//router.get('/users/:email?', function (req, res){
 
 router.get('/users/:id?', function(req, res){
 	var userID = req.params.id; 
@@ -55,7 +54,7 @@ router.get('/users/:id?', function(req, res){
 		
 		models.Products.findAll().then(function (data2) {
 			res.render('userView', {Users : data, Products : data2});
-			});
+		});
 	});
 });
 
@@ -66,23 +65,7 @@ router.get('/users/:id?', function(req, res){
 // 	});
 // });
 
-		// router.get('/users/:email?', function (req, res){
-		// 	var user = db.Users.
 
-		// 	//var currentUserEmail = req.params.email;
-
-		// 	models.Users.findOne().then(function (data) {
-		// 		models.Products.findAll().then(function (data2) {
-		// 			res.render('userView', {Users : data, Products : data2});
-		// 		});
-		// 	});
-		// });
-
-// router.post('/burgers/create', function(req, res) {
-// 	models.burgers.create({burger_name: req.body.name, devoured: 0}).then(function() {
-// 		res.redirect('/burgers'); 
-// 		}); 
-// }); 
 
 // router.put('/burgers/update/:id', function(req,res) {
 
