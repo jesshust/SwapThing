@@ -50,9 +50,12 @@ router.get('/users/:id?', function(req, res){
 	console.log("this is from req.params.id: " + userID);
 
 	models.Users.findOne({ where: {id: userID} }).then(function (data){
-		res.render(('userView'), {Users: data});
-		console.log("THIS IS FROM data:" + userID);
-
+		// res.render(('userView'), {Users: data});
+		// console.log("THIS IS FROM data:" + userID);
+		
+		models.Products.findAll().then(function (data2) {
+			res.render('userView', {Users : data, Products : data2});
+			});
 	});
 });
 
