@@ -121,14 +121,19 @@ router.get('/login', function(req, res){
 
 router.post('/login', function(req, res){
 	var email = req.body.email; 
-	var password = req.body.password; 
+	var password = req.body.password;
+
+	models.Users.findAll().then(function (data) {
+		console.log(data);
+
+		res.render('index', {Users : data});
+	});
 	if(email === 'jkhust@gmail.com' && password === 'Popcorn2'){
 		alert('Login Success'); 
 		res.redirect('/users/1'); 
 
 	} else {
-	
-		res.render('index')
+		res.render('index');
 	}
 }); 
 
