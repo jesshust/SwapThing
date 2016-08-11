@@ -78,9 +78,9 @@
             <h5>Time to get swapping</h5>
             <br>
             <hr>
+          </div>
           {{/with}}
 
-          </div>
 
           <!-- Get Swapping TXT -->
           <br>
@@ -180,15 +180,16 @@
           <div class="row">
 
             <!-- Card 1 -->
-            {{#with Products}}
+
+            {{#each Products}}
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image">
-                  <!--///we can show a picture of the item them own that they would like to swap with you/// -->
-                  <img src="../css/imgs/placeholder/measuringcups.jpg">
+                  <!--///we can show a picture of te item them own that they would like to swap with you/// -->
+                  <img src="{{imageURL}}">
                 </div>
                 <div class="card-content">
-                  <p>[FRIEND'S NAME] would like to swap your [ITEM] for their [ITEM]</p>
+                  <p> {{UsersId}} would like to swap your {{product_name}} for their [ITEM]</p>
                 </div>
                 <div class="card-action">
                   <a class= "modal-trigger blueClick" href="#congrats">Accept Swap</a>
@@ -197,8 +198,7 @@
                 </div>
               </div>
             </div>
-            {{/with}}
-
+            {{/each}} 
 
 
         {{!--     <!-- Card 2 -->
