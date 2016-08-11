@@ -93,12 +93,50 @@ router.get('/users/:id?', function(req, res){
 //======================================================================================
 //Jess's Half
 
+var session = require('express-session'); 
 
-router.post('/logIn', function(req, res){
-	models.Users.findOne().then(function (data) {
-		res.render('index', {Users : data}); 
+//session
+router.use(session({
+	secret: 'keyboard cat', 
+	saveUninitialized: true, 
+	cookie: { secure: true }, 
+app.use(flash());
+app.use(function(req, res, next){
+	res.locals.messages = req.flash(); 
+		next(); 
+	});  
+
+})); 
+
+//create login
+
+
+//prompt user to login
+
+router.get('/login', function(req, res){
+	var email = req.body.email; 
+	var password = req.body.password; 
+	if(userID === 'jessicakhust@gmail.com' && password === 'Popcorn1'){
+		req.flash('messages', { 'success' : 'Login Success' }); 
+		res.redirect('/users/1'); 
+	} else {
+		req.flash('messages', { 'error' : 'Invalid username or password'}); 
+		res.locals.messages = req.flash(); 
+		res.render('login', { title : 'Login'}); 
+	}
+}); 
+
+//once account is created, user has their own 'page'
+router.get('/userView', function(req, res){
+	var currentUserID = req.session.userID; 
+
+	models.Users.findAll().then(function(data){
+
+		models.Products.findAll().then(function(data2){
+			res.render('userView', 
+			{Users : data, Products :data2}); 
+		}); 
 	}); 
-});
-
+}); 
 
 module.exports = router;
