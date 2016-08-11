@@ -73,10 +73,14 @@
         <div>
           <!-- NAME here -->
           <div id="username">
-            <h2>Welcome, [Name]!</h2>
+
+          {{#with Users}}
+            <h2>Welcome, {{firstName}} !</h2>
             <h5>Time to get swapping</h5>
             <br>
             <hr>
+          {{/with}}
+
           </div>
 
           <!-- Get Swapping TXT -->
@@ -108,7 +112,7 @@
               </div>
             </div>
 
-            <!-- Card 2 -->
+         {{!--    <!-- Card 2 -->
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
@@ -166,7 +170,7 @@
                   <p>Amount of use: </p>
                   <p>Sold By: </p>
                 </div>
-              </div>
+              </div> --}}
             </div>
 
           <div id="swapped">
@@ -177,6 +181,7 @@
           <div class="row">
 
             <!-- Card 1 -->
+            {{#with Products}}
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image">
@@ -193,8 +198,11 @@
                 </div>
               </div>
             </div>
+            {{/with}}
 
-            <!-- Card 2 -->
+
+
+        {{!--     <!-- Card 2 -->
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image">
@@ -246,7 +254,8 @@
                   <br>
                   <a class="modal-trigger" href="#reject">Reject Swap</a>
                 </div>
-              </div>
+              </div> --}}
+
             </div>
 
 
