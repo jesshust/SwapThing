@@ -59,7 +59,7 @@
           <ul class="links">
             <li><a class="modal-trigger" href="#postAProduct">Post Product</a></li>
             <li><a class="torequests" href="#swapped">Swap Requests</a></li>
-            <li><a href="#">Manage Swaps</a></li>
+            <li><a href="/users/manageView">Manage Swaps</a></li>
             <li>Logout</li>
           </ul>
           </blockquote>
@@ -415,6 +415,8 @@
       <script type="text/javascript" src="../js/materialize.js"></script>
       <script src="../js/app.js"></script>
       <script type="text/javascript">
+
+
           $('#postProduct').on("click", function() {
             var userInput = {
               product_name: $('#product_name').val().trim(),

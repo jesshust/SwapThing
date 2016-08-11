@@ -60,6 +60,12 @@ router.get('/users/:id?', function(req, res){
 });
 
 
+// router.get('/users/manageView', function (req, res){
+// 		models.Users.findAll().then(function (data) {
+// 		res.render('manageView', {Users : data});
+// 	});
+// });
+
 		// router.get('/users/:email?', function (req, res){
 		// 	var user = db.Users.
 
