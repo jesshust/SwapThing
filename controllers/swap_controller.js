@@ -49,8 +49,9 @@ router.get('/users/:id?', function(req, res){
 	console.log("this is from req.params.id: " + userID);
 
 	models.Users.findOne({ where: {id: userID} }).then(function (data){
-		res.render('userView'), {Users: data};
+		res.render(('userView'), {Users: data});
 		console.log("THIS IS FROM data:" + userID);
+
 	});
 });
 

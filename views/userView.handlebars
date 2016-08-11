@@ -74,15 +74,14 @@
           <!-- NAME here -->
           <div id="username">
 
-            {{!--  {{#with Users}} --}}            
-
+          {{#with Users}}
             <h2>Welcome, {{firstName}} !</h2>
             <h5>Time to get swapping</h5>
             <br>
             <hr>
-          </div>
+          {{/with}}
 
-          {{!-- {{/with}}--}}
+          </div>
 
           <!-- Get Swapping TXT -->
           <br>
@@ -182,6 +181,7 @@
           <div class="row">
 
             <!-- Card 1 -->
+            {{#with Products}}
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image">
@@ -198,6 +198,9 @@
                 </div>
               </div>
             </div>
+            {{/with}}
+
+
 
         {{!--     <!-- Card 2 -->
             <div class="col s12 m3">

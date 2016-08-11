@@ -12,6 +12,10 @@ hr {
 	margin-top: 50px;
 }
 
+nav .nav-wrapper form, nav .nav-wrapper form .input-field{
+	height: 64px !important;
+}
+
 nav .brand-logo {
   color: white;
   padding-left: 40px;
