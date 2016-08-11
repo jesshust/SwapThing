@@ -119,26 +119,34 @@ router.get('/login', function(req, res){
 	var email = req.body.email; 
 	var password = req.body.password; 
 	if (email === req.body.email && password === req.body.password){
-		alert ('Account Created');
-		res.redirect('users:id?');  
+		console.log('Account Created');
+		res.redirect('userView');  
 	} else {
-		alert('Must enter an email address and password'); 
-		res.render('/')
+		console.log('Must enter an email address and password'); 
+		res.render('index')
 	}
 }); 
 
 router.post('/login', function(req, res){
 	var email = req.body.email; 
 	var password = req.body.password; 
-	if(email === 'jessicakhust@gmail.com' && password === 'Popcorn1'){
+	if(email === 'jkhust@gmail.com' && password === 'Popcorn2'){
 		alert('Login Success'); 
 		res.redirect('/users/1'); 
-		console.log('Logged In')
+
 	} else {
-		alert('Invalid username or password'); 
-		res.render('/')
+	
+		res.render('index')
 	}
 }); 
+
+//create logout
+router.get('/logout', function (req, res){
+	req.session.reset(); 
+	res.redirect('/login'); 
+}); 
+
+//need post
 
 //once account is created, user has their own 'page'
 router.get('/userView', function(req, res){
