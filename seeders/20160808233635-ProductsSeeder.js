@@ -18,7 +18,7 @@ module.exports = {
       category: 'Electronics',
       scaleRating: 3,
       UsersId: 1,
-      swapStatus: 0
+      swapStatus: 1
     }, {
       product_name: 'Makeup',
       description: 'Hardly used eye shadow palette',
