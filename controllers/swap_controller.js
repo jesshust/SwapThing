@@ -97,12 +97,72 @@ router.get('/users/:id?', function(req, res){
 //======================================================================================
 //Jess's Half
 
+var session = require('express-session'); 
+var flash = require('connect-flash'); 
 
-router.post('/logIn', function(req, res){
-	models.Users.findOne().then(function (data) {
-		res.render('index', {Users : data}); 
+//session
+
+// app.use(flash());
+// app.use(session({ secret: 'keyboard'}));
+// // router.use(session({
+// // 	secret: 'keyboard cat', 
+// // 	saveUninitialized: true, 
+// // 	cookie: { secure: true }, 
+// // app.use(flash());
+// app.use(function(req, res, next){
+// 	res.locals.messages = req.flash(); 
+// 		next(); 
+// 	});  
+
+
+//create login
+
+
+//prompt user to create account login
+router.get('/login', function(req, res){
+	var email = req.body.email; 
+	var password = req.body.password; 
+	if (email === req.body.email && password === req.body.password){
+		console.log('Account Created');
+		res.redirect('userView');  
+	} else {
+		console.log('Must enter an email address and password'); 
+		res.render('index')
+	}
+}); 
+
+router.post('/login', function(req, res){
+	var email = req.body.email; 
+	var password = req.body.password; 
+	if(email === 'jkhust@gmail.com' && password === 'Popcorn2'){
+		alert('Login Success'); 
+		res.redirect('/users/1'); 
+
+	} else {
+	
+		res.render('index')
+	}
+}); 
+
+//create logout
+router.get('/logout', function (req, res){
+	req.session.reset(); 
+	res.redirect('/login'); 
+}); 
+
+//need post
+
+//once account is created, user has their own 'page'
+router.get('/userView', function(req, res){
+	var currentUserID = req.session.userID; 
+
+	models.Users.findAll().then(function(data){
+
+		models.Products.findAll().then(function(data2){
+			res.render('userView', 
+			{Users : data, Products :data2}); 
+		}); 
 	}); 
-});
-
+}); 
 
 module.exports = router;
