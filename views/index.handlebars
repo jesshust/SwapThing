@@ -207,7 +207,7 @@
 
         var currentURL = window.location.origin;
 
-        $.post(currentURL + '/api/' + userInput.email, function(data) {
+        $.post(currentURL + '/login' + userInput.email, function(data) {
 
           console.log(data);
 

@@ -113,7 +113,7 @@ app.use(function(req, res, next){
 
 //prompt user to login
 
-router.get('/login', function(req, res){
+router.post('/login', function(req, res){
 	var email = req.body.email; 
 	var password = req.body.password; 
 	if(userID === 'jessicakhust@gmail.com' && password === 'Popcorn1'){
