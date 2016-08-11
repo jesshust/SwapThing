@@ -1,6 +1,8 @@
 'use strict';
+var Sequelize = require('sequelize');
+
 module.exports = function(sequelize, DataTypes) {
-  var Swapping = sequelize.define('Swappings', {
+  var Swappings = sequelize.define('Swappings', {
     firstPersonID: DataTypes.INTEGER,
     firstPersonProductID: DataTypes.INTEGER,
     secondPersonID: DataTypes.INTEGER,
