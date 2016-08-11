@@ -22,9 +22,11 @@ router.post('/api/newuser', function(req, res) {
 	};
 
 	models.Users.create(currentUser).then(function() {
-		res.json(currentUser);
-		console.log("this is from currentUser: " + currentUser.email);
-	}); 
+		models.Users.findOne({where:{email: currentUser.email}})
+		.then(function(user){
+			res.json(user);
+		});
+	});
 });
 
 router.post('/api/newproduct', function(req, res) {
@@ -46,21 +48,18 @@ router.post('/api/newproduct', function(req, res) {
 
 router.get('/users/:id?', function(req, res){
 	var userID = req.params.id; 
-	console.log("this is from req.params.id: " + userID);
 
-	models.Users.findOne({ where: {id: userID} }).then(function (data){
-		// res.render(('userView'), {Users: data});
-		// console.log("THIS IS FROM data:" + userID);
+	models.Users.findOne({ where: {id: userID} }).then(function (user){
 		
 		models.Products.findAll().then(function (data2) {
-			res.render('userView', {Users : data, Products : data2});
+			res.render('userView', {Users : user, Products : data2});
 		});
 	});
 });
 
 
 router.get('/manageView', function (req, res){
-		models.Users.findAll().then(function (data) {
+	models.Users.findAll().then(function (data) {
 		res.render('manageView', {Users : data});
 	});
 });
