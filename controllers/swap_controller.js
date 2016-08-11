@@ -23,6 +23,7 @@ router.post('/api/newuser', function(req, res) {
 
 	models.Users.create(currentUser).then(function() {
 		res.json(currentUser);
+		console.log("this is from currentUser: " + currentUser.email);
 	}); 
 });
 
