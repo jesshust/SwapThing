@@ -22,6 +22,8 @@
 
   <body>
 
+      <body>
+
   <nav>
     <div class="nav-wrapper">
       <a class="brand-logo swap left">SwapThing</a>
@@ -59,7 +61,7 @@
           <ul class="links">
             <li><a class="modal-trigger" href="#postAProduct">Post Product</a></li>
             <li><a class="torequests" href="#swapped">Swap Requests</a></li>
-            <li><a href="#">Manage Swaps</a></li>
+            <li><a href="#">Swap Store</a></li>
             <li>Logout</li>
           </ul>
           </blockquote>
@@ -73,33 +75,37 @@
           <!-- NAME here -->
           <div id="username">
 
-          {{#with Users}}
-            <h2>Welcome, {{firstName}} !</h2>
-            <h5>Time to get swapping</h5>
+      
+      <!-- Swap Info Area -->
+      <div class="col s12 m9 l9">
+        <div>
+          <!-- NAME here -->
+          <div id="username">
+            <h2>Manage Your Inventory</h2>
             <br>
             <hr>
-          {{/with}}
+          </div>
+
 
           </div>
 
           <!-- Get Swapping TXT -->
           <br>
           <div id="toswap">
-            <h5>Check out your friend's awesome stuff</h5>
+            <h5>Current Inventory</h5>
           </div>
 
-          <!-- Friends Items Row -->
-          <div class="row">
+      <div class="row">
 
             <!-- Card 1 -->
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="../css/imgs/placeholder/whiskey_glasses.jpg">
+                  <img class="activator" src="public/css/imgs/placeholder/whiskey_glasses.jpg">
                 </div>
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4">Glasses<i class="material-icons right">more_vert</i></span>
-                  <p><a class="modal-trigger" href="#swapAProduct">Request a swap</a></p>
+                  <p><a class="modal-trigger" href="#updateProduct">Update Product</a></p>
                 </div>
                 <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Whiskey Glasses<i class="material-icons right">close</i></span>
@@ -111,15 +117,15 @@
               </div>
             </div>
 
-         {{!--    <!-- Card 2 -->
+            <!-- Card 2 -->
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="../css/imgs/placeholder/polaroid_camera.jpg">
+                  <img class="activator" src="public/css/imgs/placeholder/polaroid_camera.jpg">
                 </div>
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4">Polaroid<i class="material-icons right">more_vert</i></span>
-                  <p><a class="modal-trigger" href="#swapAProduct">Request a swap</a></p>
+                  <p><a class="modal-trigger" href="#updateProduct">Update Product</a></p>
                 </div>
                 <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Polaroid<i class="material-icons right">close</i></span>
@@ -135,11 +141,11 @@
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="../css/imgs/placeholder/makeuppalette.jpg">
+                  <img class="activator" src="public/css/imgs/placeholder/makeuppalette.jpg">
                 </div>
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4">Makeup<i class="material-icons right">more_vert</i></span>
-                  <p><a class="modal-trigger" href="#swapAProduct">Request a swap</a></p>
+                  <p><a class="modal-trigger" href="#updateProduct">Update Product</a></p>
                 </div>
                 <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Makeup<i class="material-icons right">close</i></span>
@@ -156,11 +162,11 @@
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="../css/imgs/placeholder/nikes.jpg">
+                  <img class="activator" src="public/css/imgs/placeholder/nikes.jpg">
                 </div>
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4"> Nike's<i class="material-icons right">more_vert</i></span>
-                  <p><a class="modal-trigger" href="#swapAProduct" id="startSwap">Request a swap</a></p>
+                  <p><a class="modal-trigger" href="#updateProduct">Update Product</a></p>
                 </div>
                 <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Nike's<i class="material-icons right">close</i></span>
@@ -169,10 +175,10 @@
                   <p>Amount of use: </p>
                   <p>Sold By: </p>
                 </div>
-              </div> --}}
+              </div>
             </div>
 
-          <div id="swapped">
+ <div id="swapped">
             <h5>Pending Swap Requests</h5>
           </div>
 
@@ -180,36 +186,32 @@
           <div class="row">
 
             <!-- Card 1 -->
-            {{#with Products}}
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image">
                   <!--///we can show a picture of the item them own that they would like to swap with you/// -->
-                  <img src="../css/imgs/placeholder/measuringcups.jpg">
+                  <img src="public/css/imgs/placeholder/measuringcups.jpg">
                 </div>
                 <div class="card-content">
-                  <p>[FRIEND'S NAME] would like to swap your [ITEM] for their [ITEM]</p>
+                  <p>[FRIEND'S NAME] would like to swap your [ITEM] for thier [ITEM]</p>
                 </div>
                 <div class="card-action">
-                  <a class= "modal-trigger blueClick" href="#congrats">Accept Swap</a>
+                  <a class= "modal-trigger" href="#congrats">Accept Swap</a>
                   <br>
                   <a class="modal-trigger" href="#reject">Reject Swap</a>
                 </div>
               </div>
             </div>
-            {{/with}}
 
-
-
-        {{!--     <!-- Card 2 -->
+            <!-- Card 2 -->
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image">
                   <!--///we can show a picture of the item them own that they would like to swap with you/// -->
-                  <img src="../css/imgs/placeholder/desk.jpg">
+                  <img src="public/css/imgs/placeholder/desk.jpg">
                 </div>
                 <div class="card-content">
-                  <p>[FRIEND'S NAME] would like to swap your [ITEM] for their [ITEM]</p>
+                  <p>[FRIEND'S NAME] would like to swap your [ITEM] for thier [ITEM]</p>
                 </div>
                 <div class="card-action">
                   <a class= "modal-trigger" href="#congrats">Accept Swap</a>
@@ -224,10 +226,10 @@
               <div class="card">
                 <div class="card-image">
                   <!--///we can show a picture of the item them own that they would like to swap with you/// -->
-                  <img src="../css/imgs/placeholder/vase.jpg">
+                  <img src="public/css/imgs/placeholder/vase.jpg">
                 </div>
                 <div class="card-content">
-                  <p>[FRIEND'S NAME] would like to swap your [ITEM] for their [ITEM]</p>
+                  <p>[FRIEND'S NAME] would like to swap your [ITEM] for thier [ITEM]</p>
                 </div>
                 <div class="card-action">
                   <a class= "modal-trigger" href="#congrats">Accept Swap</a>
@@ -243,54 +245,99 @@
               <div class="card">
                 <div class="card-image">
                   <!--///we can show a picture of the item them own that they would like to swap with you/// -->
-                  <img src="../css/imgs/placeholder/bike_img.jpg">
+                  <img src="public/css/imgs/placeholder/bike_img.jpg">
                 </div>
                 <div class="card-content">
-                  <p>[FRIEND'S NAME] would like to swap your [ITEM] for their [ITEM]</p>
+                  <p>[FRIEND'S NAME] would like to swap your [ITEM] for thier [ITEM]</p>
                 </div>
                 <div class="card-action">
                   <a class= "modal-trigger" href="#congrats">Accept Swap</a>
                   <br>
                   <a class="modal-trigger" href="#reject">Reject Swap</a>
                 </div>
-              </div> --}}
-
+              </div>
             </div>
 
 
     </div>
 
+    <!-- Update Modal Structure -->
+    <div id="updateProduct" class="modal">
+      <div class="modal-content ">
+        <button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
+        <h4>Update Your Product</h4>
+        <p>Adjust your inventory accordingly</p>
+          <form>
+          <div class="row">
+            <div class="input-field col s6">
+                <input id="product_name" type="text" class="validate">
+                <label for="product_name">Product Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="product_description" type="text" class="validate">
+                <label for="product_description">Product Description</label>
+            </div>
+           </div>
+           <div class="row">
+              <div class="input-field col s12">
+                <input id="imageURL" type="url" class="validate">
+                <label for="imageURL">Input Image URL</label>
+              </div>
+            </div>
+            <form action="#">
+            <h5>Pick one category for your product</h5>
+              <p>
+                <input class="with-gap" name="category" type="radio" id="beauty" value="Beauty/Health"/>
+                <label for="beauty">Beauty/Health</label>
 
-      <!-- Swap Modal Structure -->
-      <div id="swapAProduct" class="modal">
-        <div class="modal-content">
-            <button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
-          <h4>Get your swap on!</h4>
-          <br>
-              <div class="row">
-                <div class="col s12 l5">
-                <img src= "http://placehold.it/150x150.com" class="responsive-img" id="wantedProduct">
-                </div>
-                <div class="icon-block col s12 l2">
-                  <h3 class="center"><i class="material-icons medium blueIcon swapArrow">swap_calls</i></h3>
-              </div>
-              <div class="input-field col s12 l5">
-                <select class="icons">
-                  <option value="" selected>What's it worth trading for?</option>
-                  <option value="1" data-icon="../css/imgs/placeholder/bike_img.jpg" class="left circle data-icon">example 1</option>
-                  <option value="2" data-icon="../css/imgs/placeholder/makeuppalette.jpg" class="left circle data-icon">example 2</option>
-                  <option value="3" data-icon="../css/imgs/placeholder/nikes.jpg" class="left circle data-icon">example 3</option>
-                </select>
-              </div>
-              </div>
-              <div class="row">
-              <div class="modal-footer">
-                  <button class="btn waves-effect waves-light right" type="submit" name="action" id="finishSwap">Make a Swap!
-                  </button>
-              </div>
-              </div>
-        </div>
+                <input class="with-gap" name="category" type="radio" id="electronic" value="Electronics"/>
+                <label for="electronic">Electronics</label>
+
+                <input class="with-gap" name="category" type="radio" id="apparel" value="Apparel"/>
+                <label for="apparel">Apparel</label>
+
+                <input class="with-gap" name="category" type="radio" id="media" value="Media"/>
+                <label for="media">Media</label>
+
+                <input class="with-gap" name="category" type="radio" id="house" value="Household Goods"/>
+                <label for="house">Household Goods</label>
+
+                <input class="with-gap" name="category" type="radio" id="other" value="Other"/>
+                <label for="other">Other</label>
+              </p>
+            </form>
+            <br>
+
+            <form action="#">
+            <h5>What condition is your product in?</h5>
+              <p>
+                <input class="with-gap" name="condition" type="radio" id="1" value="1"/>
+                <label for="1">Heavily used</label>
+
+                <input class="with-gap" name="condition" type="radio" id="2" value="2"/>
+                <label for="2">More than average use</label>
+
+                <input class="with-gap" name="condition" type="radio" id="3" value="3"/>
+                <label for="3">Used from time to time</label>
+
+                <input class="with-gap" name="condition" type="radio" id="4" value="4"/>
+                <label for="4">Hardly used</label>
+
+                <input class="with-gap" name="condition" type="radio" id="5" value="5"/>
+                <label for="5">Basically new</label> 
+              </p>
+            </form>
+            <br>
+
+          </form>
+          <div class="modal-footer">
+            <button class="btn waves-effect waves-light right" type="submit" name="action" id="postProduct">Update Your Product
+            </button>
+             <button class="btn waves-effect waves-light pink left" type="submit" name="action" id="postProduct">Delete Your Product
+            </button>
+          </div>
       </div>
+    </div>
 
     <!-- Post a Product Modal Structure -->
     <div id="postAProduct" class="modal">
@@ -383,7 +430,7 @@
       <!-- Reject Modal Structure -->
       <div id="reject" class="modal">
       <div class="modal-content">
-          <button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
+        <button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
         <h4>No problem, better swapping next time!</h4>
         <p>[ITEM NAME] will be returned back to your shop and [FRIEND'S NAME] will be notified! Be sure to check out [FRIEND'S NAME]'s shop to see if there is something else you would be willing to trade.</p>
       </div>
