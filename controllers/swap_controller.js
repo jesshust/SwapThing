@@ -94,7 +94,7 @@ router.get('/users/:id?', function(req, res){
 //Jess's Half
 
 var session = require('express-session'); 
-
+var flash = require('connect-flash'); 
 //session
 router.use(session({
 	secret: 'keyboard cat', 
