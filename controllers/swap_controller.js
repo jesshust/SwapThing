@@ -135,18 +135,25 @@ router.post('/login', function(req, res){
 			}
 		}).then(function(result){
 
-			if(password === result.password){
-				setEmailCookie = cookie.serialize('email', email);
-				setIdCookie = cookie.serialize('id', result.id);
-				res.setHeader("Set-Cookie", setEmailCookie); 
-				
-				res.append("Set-Cookie", setIdCookie);
-				var hash = '/users/'+result.id;
-				res.json({url: hash});
+			if (result !== null){
+
+				if(password === result.password){
+					setEmailCookie = cookie.serialize('email', email);
+					setIdCookie = cookie.serialize('id', result.id);
+					res.setHeader("Set-Cookie", setEmailCookie); 
+					
+					res.append("Set-Cookie", setIdCookie);
+					var hash = '/users/'+result.id;
+					res.json({url: hash});
+				} else {
+
+					res.json({errorMessage: 'Password Incorrect'}); 
+				}
+
 			} else {
-				
-				res.render('index')
+				res.json({errorMessage: 'Incorrect Email'}); 
 			}
+
 	})
 }); 
 
