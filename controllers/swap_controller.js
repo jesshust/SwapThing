@@ -104,6 +104,11 @@ router.get('/users/:id?', function(req, res){
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 3ca1feedaf53577f74b58b00d7655eed91ffec24
 router.get('/manageView', function (req, res){
 	if(!cookies.email && !cookies.id){
 		return res.redirect("/");
