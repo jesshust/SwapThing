@@ -265,7 +265,7 @@
       <!-- Swap Modal Structure -->
       <div id="swapAProduct" class="modal">
         <div class="modal-content">
-            <button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
+            <button id="clear-modal" class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
           <h4>Get your swap on!</h4>
           <br>
               <div class="row">
@@ -295,29 +295,29 @@
 
     <!-- Post a Product Modal Structure -->
     <div id="postAProduct" class="modal">
-      <div class="modal-content ">
-        <button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
+      <div class="modal-content">
+        <button id="clearModal" input="reset" class="modal-close btn-flat" type="reset" style="position:absolute;top:0;right:0;">X</button>
         <h4>Post A Product</h4>
         <p>Tell us a bit about what you're swapping</p>
           <form>
           <div class="row">
             <div class="input-field col s6">
                 <input id="product_name" type="text" class="validate">
-                <label for="product_name">Product Name</label>
+                <label class="active" for="product_name">Product Name</label>
             </div>
             <div class="input-field col s6">
                 <input id="product_description" type="text" class="validate">
-                <label for="product_description">Product Description</label>
+                <label class="active" for="product_description">Product Description</label>
             </div>
            </div>
            <div class="row">
               <div class="input-field col s12">
                 <input id="imageURL" type="url" class="validate">
-                <label for="imageURL">Input Image URL</label>
+                <label class="active" for="imageURL">Input Image URL</label>
               </div>
             </div>
-            <form action="#">
-            <h5>Pick one category for your product</h5>
+            <form id="catergory-product" action="#">
+              <h5>Pick one category for your product</h5>
               <p>
                 <input class="with-gap" name="category" type="radio" id="beauty" value="Beauty/Health"/>
                 <label for="beauty">Beauty/Health</label>
@@ -340,7 +340,7 @@
             </form>
             <br>
 
-            <form action="#">
+            <form id="radioForm" action="#">
             <h5>What condition is your product in?</h5>
               <p>
                 <input class="with-gap" name="condition" type="radio" id="1" value="1"/>
@@ -417,6 +417,14 @@
       <script src="../js/app.js"></script>
       <script type="text/javascript">
 
+
+
+      $('#clearModal').on("click", function() {
+          $('#product_name').val('');
+          $('#product_description').val('');
+          $('#imageURL').val('');
+          $(".with-gap").prop('checked',false);
+      });
 
           $('#postProduct').on("click", function() {
             var userInput = {
