@@ -415,10 +415,10 @@
       <script type="text/javascript" src="../js/materialize.js"></script>
       <script src="../js/app.js"></script>
       <script type="text/javascript">
-          console.log("do i renve osdnalknqd;q")
+         
           $("#logout").click(function(event){
               event.preventDefault();
-              console.log("did i fire?")
+             
               var currentURL = window.location.origin;
               $.get(currentURL + "/logout").then(function(){
                 window.location = "/";
@@ -440,7 +440,7 @@
 
             $.post(currentURL + '/api/newproduct', userInput, function(data) {
 
-              console.log(data);
+       
 
               $('#postAProduct').closeModal();
 

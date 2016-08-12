@@ -30,13 +30,24 @@ router.post('/api/newuser', function(req, res) {
 	};
 
 	models.Users.create(currentUser).then(function() {
-		models.Users.findOne({where:{email: currentUser.email}})
-		.then(function(user){
-			setCookie = cookie.serialize('email', currentUser.email); 
+		models.Users.findOne(
+			{
+				where: {
+					email: currentUser.email
+				}
+		}).then(function(user){
+
+			setEmailCookie = cookie.serialize('email', currentUser.email);
+			setIdCookie = cookie.serialize('id', user.id);
+			res.setHeader("Set-Cookie", setEmailCookie); 
+			res.append("Set-Cookie", setIdCookie);
+			var hash = '/users/'+user.id; 
 			res.json(user);
 		});
 	});
 });
+
+
 
 router.post('/api/newproduct', function(req, res) {
 	var currentProduct = {
@@ -56,9 +67,7 @@ router.post('/api/newproduct', function(req, res) {
 
 
 router.get('/users/:id', function(req, res){
-	if(!cookies.email && !cookies.id){
-		return res.redirect("/");
-	}
+
 	var userID = req.params.id; 
 
 	models.Users.findOne({ where: {id: userID} }).then(function (user){
@@ -70,7 +79,11 @@ router.get('/users/:id', function(req, res){
 });
 
 
+
 router.get('/manageView', function (req, res){
+	if(!cookies.email && !cookies.id){
+		return res.redirect("/");
+	}
 	models.Users.findAll().then(function (data) {
 		res.render('manageView', {Users : data});
 	});
@@ -102,42 +115,11 @@ var escapeHtml = require('escape-html');
 var http = require('http'); 
 var url = require('url'); 
 
-//session
-
-// app.use(flash());
-// app.use(session({ secret: 'keyboard'}));
-// // router.use(session({
-// // 	secret: 'keyboard cat', 
-// // 	saveUninitialized: true, 
-// // 	cookie: { secure: true }, 
-// // app.use(flash());
-// app.use(function(req, res, next){
-// 	res.locals.messages = req.flash(); 
-// 		next(); 
-// 	});  
-
-
-//create login
-
-
-//prompt user to create account login
-// router.get('/login', function(req, res){
-// 	var email = req.body.email; 
-// 	var password = req.body.password; 
-// 	if (email === req.body.email && password === req.body.password){
-// 		console.log('Account Created');
-// 		res.redirect('userView');  
-// 	} else {
-// 		console.log('Must enter an email address and password'); 
-// 		res.render('index')
-// 	}
-// }); 
 
 
 router.post('/login', function(req, res){
 	var email = req.body.email; 
 	var password = req.body.password; 
-	console.log("IS THIS AN EMAIL?",email);
 	models.Users.findOne(
 		{
 			where: {
@@ -152,10 +134,9 @@ router.post('/login', function(req, res){
 				
 				res.append("Set-Cookie", setIdCookie);
 				var hash = '/users/'+result.id;
-				//res.redirect(hash);
 				res.json({url: hash});
 			} else {
-				console.log("password was incorrect");
+				
 				res.render('index')
 			}
 	})
