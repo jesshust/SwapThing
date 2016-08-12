@@ -332,10 +332,16 @@
 
           </form>
           <div class="modal-footer">
-            <button class="btn waves-effect waves-light right" type="submit" name="action" id="postProduct">Update Your Product
-            </button>
-             <button class="btn waves-effect waves-light pink left" type="submit" name="action" id="postProduct">Delete Your Product
-            </button>
+            <form action="product/update/{{this.id}}?_method=PUT" method="POST">
+              <input type="hidden" name="update" value="true">
+              <button class="btn waves-effect waves-light right" type="submit" name="action" id="postProduct">Update Your Product
+              </button>
+            </form>
+            <form action="product/delete/{{this.id}}?_method=DELETE" method="POST">
+              <input type="hidden" name="delete" value="true">
+              <button class="btn waves-effect waves-light pink left" type="submit" name="action" id="deleteProduct">Delete Your Product
+              </button>
+            </form>
           </div>
       </div>
     </div>

@@ -65,20 +65,28 @@ router.get('/manageView', function (req, res){
 });
 
 
+router.delete('/product/delete/:id', function (req, res) {
+	models.Products.destroy({where: {id:req.params.id}}).then(function() {
+		res.render('manageView', {Users : data});
+	});
+});
 
-// router.put('/burgers/update/:id', function(req,res) {
 
-// 	models.burgers.update( {'devoured' : req.body.devoured }, {where: {id:req.params.id}}).then(function(){
-// 		res.redirect('/burgers');
-// 	});
-// });
+router.put('/product/update/:id', function(req,res) {
+	var updateProduct = {
+		product_name: req.body.product_name,
+        description: req.body.description,
+        imageURL: req.body.imageURL,
+        category: req.body.category,
+        scaleRating: req.body.scaleRating,
+        UsersId: req.body.UsersId,
+        swapStatus: req.body.swapStatus
+	};
 
-// router.delete('/burgers/delete/:id', function (req, res) {
-
-// 	models.burger.destroy({where: {id:req.params.id}}).then(function() {
-// 		res.redirect('/burgers');
-// 	});
-// });
+	models.Products.update(updateProduct, {where: {id:req.params.id}}).then(function(){
+		res.render('manageView', {Users : data});
+	});
+});
 
 
 //Monica's Half
