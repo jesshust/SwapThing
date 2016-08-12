@@ -69,7 +69,7 @@ router.post('/api/newproduct', function(req, res) {
 //++++++++++++++THIS IS ALL THE ASSOCIATIONS++++++++++++++++
 
 router.get('/users/:id?', function(req, res){
-	var userID = 1; 
+	var userID = 1;
 
 	models.Products.findAll(
 		{
@@ -77,26 +77,62 @@ router.get('/users/:id?', function(req, res){
 				'UsersId': 
 				{
 					ne: userID
-				},
-				'swapStatus':
-				{
-					ne: 1
 				}
 			}
 		})
 		.then(function(allProducts){
-			res.render('userView', {allProducts: allProducts});
+
+			models.Swappings.findAll(
+				{
+					where: {
+						'firstPersonID': userID
+					}
+				}
+			).then(function(swappings){
+
+				//This returns the # of swaps "first person ID" has
+				//console.log(swappings.length);
+
+				var secondPersonIDs = [];
+				var secondPersonProductIDs = [];
+				var firstPersonProductIDs = [];
+
+				for(var i = 0; i < swappings.length; i++){
+				secondPersonIDs.push(swappings[i].secondPersonID);
+				firstPersonProductIDs.push(swappings[i].firstPersonProductID);
+				secondPersonProductIDs.push(swappings[i].secondPersonProductID);
+				}
+
+				//This returns the array of USER IDs who want to swap w/FirstPerson
+				//console.log(secondPersonIDs);
+
+				//This returns the array of PRODUCT IDs second persons want to swap 
+				//console.log(secondPersonProductIDs);
+
+					models.Users.findAll(
+						{
+							where: {
+								'id': 
+									{in: secondPersonIDs}
+							}
+						}
+					).then(function(users){
+
+						console.log("this is from users.length: ")
+						console.log(users.length);
+
+						// for(var j = 0; j < users.length; j++){
+						// 	console.log("This is from Users: ")
+						// 	console.log(users.dataValues.firstName);
+						// }
+
+					});
+
+				res.render('userView', {allProducts: allProducts});
+
+			});
+
 		});
-
-	// models.Swappings.findAll(
-	// 	{
-	// 		where: {
-
-
-	// 		}
-	// 	}
-
-	// );
 
 });
 
