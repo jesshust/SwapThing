@@ -4,12 +4,20 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override'); 
 var models = require('../models'); 
 var sha1 = require('sha1'); 
+var cookie = require('cookie'); 
+var cookies = {};
+
 
 
 router.get('/', function (req, res){
-	models.Users.findAll().then(function (data) {
-		res.render('index', {Users : data});
-	});
+	cookies = cookie.parse(req.headers.cookie || '');
+	if(cookies.email && cookies.id){
+		return res.redirect("/users/"+cookies.id);
+	}
+		models.Users.findAll().then(function (data) {
+			res.render('index', {Users : data});
+		});
+
 });
 
 router.post('/api/newuser', function(req, res) {
@@ -24,6 +32,7 @@ router.post('/api/newuser', function(req, res) {
 	models.Users.create(currentUser).then(function() {
 		models.Users.findOne({where:{email: currentUser.email}})
 		.then(function(user){
+			setCookie = cookie.serialize('email', currentUser.email); 
 			res.json(user);
 		});
 	});
@@ -46,7 +55,10 @@ router.post('/api/newproduct', function(req, res) {
 });
 
 
-router.get('/users/:id?', function(req, res){
+router.get('/users/:id', function(req, res){
+	if(!cookies.email && !cookies.id){
+		return res.redirect("/");
+	}
 	var userID = req.params.id; 
 
 	models.Users.findOne({ where: {id: userID} }).then(function (user){
@@ -85,8 +97,10 @@ router.get('/manageView', function (req, res){
 //======================================================================================
 //Jess's Half
 
-var session = require('express-session'); 
-var flash = require('connect-flash'); 
+
+var escapeHtml = require('escape-html'); 
+var http = require('http'); 
+var url = require('url'); 
 
 //session
 
@@ -107,35 +121,52 @@ var flash = require('connect-flash');
 
 
 //prompt user to create account login
-router.get('/login', function(req, res){
-	var email = req.body.email; 
-	var password = req.body.password; 
-	if (email === req.body.email && password === req.body.password){
-		console.log('Account Created');
-		res.redirect('userView');  
-	} else {
-		console.log('Must enter an email address and password'); 
-		res.render('index')
-	}
-}); 
+// router.get('/login', function(req, res){
+// 	var email = req.body.email; 
+// 	var password = req.body.password; 
+// 	if (email === req.body.email && password === req.body.password){
+// 		console.log('Account Created');
+// 		res.redirect('userView');  
+// 	} else {
+// 		console.log('Must enter an email address and password'); 
+// 		res.render('index')
+// 	}
+// }); 
+
 
 router.post('/login', function(req, res){
 	var email = req.body.email; 
 	var password = req.body.password; 
-	if(email === 'jkhust@gmail.com' && password === 'Popcorn2'){
-		alert('Login Success'); 
-		res.redirect('/users/1'); 
+	console.log("IS THIS AN EMAIL?",email);
+	models.Users.findOne(
+		{
+			where: {
+				email: email
+			}
+		}).then(function(result){
 
-	} else {
-	
-		res.render('index')
-	}
+			if(password === result.password){
+				setEmailCookie = cookie.serialize('email', email);
+				setIdCookie = cookie.serialize('id', result.id);
+				res.setHeader("Set-Cookie", setEmailCookie); 
+				
+				res.append("Set-Cookie", setIdCookie);
+				var hash = '/users/'+result.id;
+				//res.redirect(hash);
+				res.json({url: hash});
+			} else {
+				console.log("password was incorrect");
+				res.render('index')
+			}
+	})
 }); 
 
 //create logout
 router.get('/logout', function (req, res){
-	req.session.reset(); 
-	res.redirect('/login'); 
+	res.clearCookie("email");
+	res.clearCookie("password");
+	res.clearCookie("id");
+	res.json({}); 
 }); 
 
 //need post

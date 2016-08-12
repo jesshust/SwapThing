@@ -105,7 +105,7 @@
            </div>
            <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
+                <input id="emailSignUp" type="email" class="validate">
                 <label for="email">E-mail</label>
               </div>
             </div>
@@ -132,14 +132,14 @@
           <form>
            <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
+                <input id="emailLogin" type="email" name="email-for-login" class="validate">
                 <label for="email">E-mail</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">Password</label>
+                <input id="passwordLogin" type="password" class="validate">
+                <label for="passwordLogin">Password</label>
               </div>
             </div> 
           </form>
@@ -178,8 +178,8 @@
         var userInput = {
           firstName: $('#first_name').val().trim(),
           lastName: $('#last_name').val().trim(),
-          email: $('#email').val().trim(),
-          password: $('#password').val().trim(),
+          email: $('#emailSignUp').val().trim(),
+          password: $('#passwordSignUp').val().trim(),
           userImage: "https://www.mautic.org/media/images/default_avatar.png"
         }
 
@@ -199,16 +199,15 @@
 
       $('#logIn').on("click", function() {
         var userInput = {
-          email: $('#email').val().trim(),
-          password: $('#password').val().trim()
+          email: $('#emailLogin').val().trim(),
+          password: $('#passwordLogin').val().trim()
         }
 
         var currentURL = window.location.origin;
 
-        $.post(currentURL + '/login' + userInput.email, function(data) {
+        $.post(currentURL + '/login', userInput, function(data) {
 
-          // console.log(data);
-          window.location.replace("/users/1");
+          window.location = data.url;
 
         });
 
