@@ -142,9 +142,9 @@ router.get('/users/:id?', function(req, res){
 
 
 router.get('/manageView', function (req, res){
-	if(!cookies.email && !cookies.id){
-		return res.redirect("/");
-	}
+	// if(!cookies.email && !cookies.id){
+	// 	return res.redirect("/");
+	// }
 	models.Users.findAll().then(function (data) {
 		res.render('manageView', {Users : data});
 	});
@@ -228,17 +228,17 @@ router.get('/logout', function (req, res){
 
 //need post
 
-//once account is created, user has their own 'page'
-router.get('/userView', function(req, res){
-	var currentUserID = req.session.userID; 
+// //once account is created, user has their own 'page'
+// router.get('/userView', function(req, res){
+// 	var currentUserID = req.session.userID; 
 
-	models.Users.findAll().then(function(data){
+// 	models.Users.findAll().then(function(data){
 
-		models.Products.findAll().then(function(data2){
-			res.render('userView', 
-			{Users : data, Products :data2}); 
-		}); 
-	}); 
-}); 
+// 		models.Products.findAll().then(function(data2){
+// 			res.render('userView', 
+// 			{Users : data, Products :data2}); 
+// 		}); 
+// 	}); 
+// }); 
 
 module.exports = router;
