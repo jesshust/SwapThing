@@ -66,19 +66,79 @@ router.post('/api/newproduct', function(req, res) {
 	}); 
 });
 
+//++++++++++++++THIS IS ALL THE ASSOCIATIONS++++++++++++++++
 
-router.get('/users/:id', function(req, res){
+router.get('/users/:id?', function(req, res){
+	var userID = 1;
 
-	var userID = req.params.id; 
+	models.Products.findAll(
+		{
+			where: {
+				'UsersId': 
+				{
+					ne: userID
+				}
+			}
+		})
+		.then(function(allProducts){
 
-	models.Users.findOne({ where: {id: userID} }).then(function (user){
-		
-		models.Products.findAll().then(function (data2) {
-			res.render('userView', {Users : user, Products : data2});
+			models.Swappings.findAll(
+				{
+					where: {
+						'firstPersonID': userID
+					}
+				}
+			).then(function(swappings){
+
+				//This returns the # of swaps "first person ID" has
+				//console.log(swappings.length);
+
+				var secondPersonIDs = [];
+				var secondPersonProductIDs = [];
+				var firstPersonProductIDs = [];
+
+				for(var i = 0; i < swappings.length; i++){
+				secondPersonIDs.push(swappings[i].secondPersonID);
+				firstPersonProductIDs.push(swappings[i].firstPersonProductID);
+				secondPersonProductIDs.push(swappings[i].secondPersonProductID);
+				}
+
+				//This returns the array of USER IDs who want to swap w/FirstPerson
+				//console.log(secondPersonIDs);
+
+				//This returns the array of PRODUCT IDs second persons want to swap 
+				//console.log(secondPersonProductIDs);
+
+					models.Users.findAll(
+						{
+							where: {
+								'id': 
+									{in: secondPersonIDs}
+							}
+						}
+					).then(function(users){
+
+						console.log("this is from users.length: ")
+						console.log(users.length);
+
+						// for(var j = 0; j < users.length; j++){
+						// 	console.log("This is from Users: ")
+						// 	console.log(users.dataValues.firstName);
+						// }
+
+					});
+
+				res.render('userView', {allProducts: allProducts});
+
+			});
+
 		});
-	});
+
 });
 
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 router.get('/manageView', function (req, res){
@@ -136,18 +196,25 @@ router.post('/login', function(req, res){
 			}
 		}).then(function(result){
 
-			if(password === result.password){
-				setEmailCookie = cookie.serialize('email', email);
-				setIdCookie = cookie.serialize('id', result.id);
-				res.setHeader("Set-Cookie", setEmailCookie); 
-				
-				res.append("Set-Cookie", setIdCookie);
-				var hash = '/users/'+result.id;
-				res.json({url: hash});
+			if (result !== null){
+
+				if(password === result.password){
+					setEmailCookie = cookie.serialize('email', email);
+					setIdCookie = cookie.serialize('id', result.id);
+					res.setHeader("Set-Cookie", setEmailCookie); 
+					
+					res.append("Set-Cookie", setIdCookie);
+					var hash = '/users/'+result.id;
+					res.json({url: hash});
+				} else {
+
+					res.json({errorMessage: 'Password Incorrect'}); 
+				}
+
 			} else {
-				
-				res.render('index')
+				res.json({errorMessage: 'Incorrect Email'}); 
 			}
+
 	})
 }); 
 
