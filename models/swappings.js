@@ -21,6 +21,10 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+
+        //products belongs to both swappings and users
+
+
       }
     }
   });

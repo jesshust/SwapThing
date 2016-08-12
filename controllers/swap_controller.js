@@ -66,20 +66,43 @@ router.post('/api/newproduct', function(req, res) {
 	}); 
 });
 
+//++++++++++++++THIS IS ALL THE ASSOCIATIONS++++++++++++++++
 
-router.get('/users/:id', function(req, res){
+router.get('/users/:id?', function(req, res){
+	var userID = 1; 
 
-	var userID = req.params.id; 
-
-	models.Users.findOne({ where: {id: userID} }).then(function (user){
-		
-		models.Products.findAll().then(function (data2) {
-			res.render('userView', {Users : user, Products : data2});
+	models.Products.findAll(
+		{
+			where: {
+				'UsersId': 
+				{
+					ne: userID
+				},
+				'swapStatus':
+				{
+					ne: 1
+				}
+			}
+		})
+		.then(function(allProducts){
+			res.render('userView', {allProducts: allProducts});
 		});
-	});
+
+	// models.Swappings.findAll(
+	// 	{
+	// 		where: {
+
+
+	// 		}
+	// 	}
+
+	// );
+
 });
 
 
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 router.get('/manageView', function (req, res){
 	if(!cookies.email && !cookies.id){
