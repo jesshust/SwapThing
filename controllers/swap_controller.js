@@ -14,9 +14,10 @@ router.get('/', function (req, res){
 	if(cookies.email && cookies.id){
 		return res.redirect("/users/"+cookies.id);
 	}
-		models.Users.findAll().then(function (data) {
-			res.render('index', {Users : data});
-		});
+	
+	models.Users.findAll().then(function (data) {
+		res.render('index', {Users : data});
+	});
 
 });
 
