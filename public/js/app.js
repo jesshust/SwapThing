@@ -16,7 +16,7 @@ $(document).ready(function(){
     }, 900);
 });
 
-  $(".brand-logo").click(function() {
+  $("#brandClick").click(function() {
     $('html, body').animate({
         scrollTop: $("#page-footer").offset().top
     }, 900);

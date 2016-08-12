@@ -1,8 +1,9 @@
 <!DOCTYPE html>
   <html>
     <head>
+    <link rel="icon" type="image/jpg" href="css/imgs/swapThingBox.jpg">
     <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!--CSS-->
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
@@ -331,10 +332,16 @@
 
           </form>
           <div class="modal-footer">
-            <button class="btn waves-effect waves-light right" type="submit" name="action" id="postProduct">Update Your Product
-            </button>
-             <button class="btn waves-effect waves-light pink left" type="submit" name="action" id="postProduct">Delete Your Product
-            </button>
+            <form action="product/update/{{this.id}}?_method=PUT" method="POST">
+              <input type="hidden" name="update" value="true">
+              <button class="btn waves-effect waves-light right" type="submit" name="action" id="postProduct">Update Your Product
+              </button>
+            </form>
+            <form action="product/delete/{{this.id}}?_method=DELETE" method="POST">
+              <input type="hidden" name="delete" value="true">
+              <button class="btn waves-effect waves-light pink left" type="submit" name="action" id="deleteProduct">Delete Your Product
+              </button>
+            </form>
           </div>
       </div>
     </div>
@@ -342,7 +349,7 @@
     <!-- Post a Product Modal Structure -->
     <div id="postAProduct" class="modal">
       <div class="modal-content ">
-        <button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
+        <button id="clearModal" class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
         <h4>Post A Product</h4>
         <p>Tell us a bit about what you're swapping</p>
           <form>
@@ -463,6 +470,13 @@
       <script src="../js/app.js"></script>
       <script type="text/javascript">
 
+
+      $('#clearModal').on("click", function() {
+          $('#product_name').val('');
+          $('#product_description').val('');
+          $('#imageURL').val('');
+          $(".with-gap").prop('checked',false);
+      });
           //   $('#swapStore').on("click", function() {
 
           //     window.location.replace("/users/" + data.email);

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
   <html>
     <head>
+      <link rel="icon" type="image/jpg" href="css/imgs/swapThingBox.jpg">
       <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       
       <!--CSS-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
@@ -24,7 +25,7 @@
 
     <nav>
       <div class="nav-wrapper">
-        <a class="brand-logo swap left">SwapThing</a>
+        <a id="brandClick" class="brand-logo swap left">SwapThing</a>
         <ul id="nav-mobile" class="right">
         <li><a class="learnMore">Learn More</a></li>
         <li><a class="modal-trigger" href="#modal1">Sign Up</a></li>
@@ -89,7 +90,7 @@
   <!-- Sign Up Modal Structure -->
     <div id="modal1" class="modal">
       <div class="modal-content">
-          <button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
+          <button id="clearSignUp" class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
         <h4>Create your account</h4>
         <p>You'll be swapping in minutes!</p>
           <form>
@@ -105,14 +106,14 @@
            </div>
            <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
-                <label for="email">E-mail</label>
+                <input id="emailSignUp" type="email" class="validate">
+                <label for="emailSignUp">E-mail</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">Password</label>
+                <input id="passwordSignUp" type="password" class="validate">
+                <label for="passwordSignUp">Password</label>
               </div>
             </div> 
           </form>
@@ -126,20 +127,20 @@
     <!-- Login Modal Structure -->
     <div id="modal2" class="modal">
       <div class="modal-content">
-          <button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
+          <button id="clearLogin" class="modal-close btn-flat" style="position:absolute;top:0;right:0;">X</button>
         <h4>Login to your account</h4>
         <p>You'll be swapping in minutes!</p>
           <form>
            <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
-                <label for="email">E-mail</label>
+                <input id="emailLogin" type="email" name="email-for-login" class="validate">
+                <label for="emailLogin">E-mail</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">Password</label>
+                <input id="passwordLogin" type="password" class="validate">
+                <label for="passwordLogin">Password</label>
               </div>
             </div> 
           </form>
@@ -174,12 +175,25 @@
       <script src="js/app.js"></script>
       <script type="text/javascript">
 
+
+     $('#clearSignUp').on("click", function() {
+          $('#first_name').val('');
+          $('#last_name').val('');
+          $('#email').val('');
+          $('#password').val('');
+      });
+
+      // $('#clearLogin').on("click", function() {
+      //     $('#email').val('');
+      //     $('#password').val('');
+      // });
+
       $('#signUp').on("click", function() {
         var userInput = {
           firstName: $('#first_name').val().trim(),
           lastName: $('#last_name').val().trim(),
-          email: $('#email').val().trim(),
-          password: $('#password').val().trim(),
+          email: $('#emailSignUp').val().trim(),
+          password: $('#passwordSignUp').val().trim(),
           userImage: "https://www.mautic.org/media/images/default_avatar.png"
         }
 
@@ -199,16 +213,23 @@
 
       $('#logIn').on("click", function() {
         var userInput = {
-          email: $('#email').val().trim(),
-          password: $('#password').val().trim()
+          email: $('#emailLogin').val().trim(),
+          password: $('#passwordLogin').val().trim()
         }
 
         var currentURL = window.location.origin;
 
-        $.post(currentURL + '/login' + userInput.email, function(data) {
+        $.post(currentURL + '/login', userInput, function(data) {
 
-          // console.log(data);
-          window.location.replace("/users/1");
+          if(data.url){
+
+            window.location = data.url;
+          } else if(data.errorMessage){
+
+            alert(data.errorMessage); 
+          } else {
+            alert("I'm sorry. The website has encountered a server failure.")
+          }
 
         });
 
