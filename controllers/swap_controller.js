@@ -98,10 +98,29 @@ router.get('/users/:id?', function(req, res){
 				var firstPersonProductIDs = [];
 
 				for(var i = 0; i < swappings.length; i++){
-				secondPersonIDs.push(swappings[i].secondPersonID);
-				firstPersonProductIDs.push(swappings[i].firstPersonProductID);
-				secondPersonProductIDs.push(swappings[i].secondPersonProductID);
+					secondPersonIDs.push(swappings[i].secondPersonID);
+					firstPersonProductIDs.push(swappings[i].firstPersonProductID);
+					secondPersonProductIDs.push(swappings[i].secondPersonProductID);
 				}
+
+				// console.log("this is from second person product ids: "); 
+				// console.log(secondPersonProductIDs);
+
+				//var swappedObjects = [];
+
+				// for(var k = 0; k < secondPersonProductIDs.length; k++){
+
+				// 	var nowProduct = parseInt(secondPersonProductIDs[k]);
+
+				// 	// console.log("This is from nowProduct: ");
+				// 	// console.log(nowProduct);
+
+				// 	swappedObjects.push(allProducts.nowProduct);
+				// 	// console.log(nowProduct);
+				// 	// console.log(swappedObjects);
+
+				// }
+
 
 				//This returns the array of USER IDs who want to swap w/FirstPerson
 				//console.log(secondPersonIDs);
@@ -118,25 +137,30 @@ router.get('/users/:id?', function(req, res){
 						}
 					).then(function(users){
 
-						console.log("this is from users.length: ")
-						console.log(users.length);
+						var secondPersonNames = [];
 
-						// for(var j = 0; j < users.length; j++){
-						// 	console.log("This is from Users: ")
-						// 	console.log(users.dataValues.firstName);
-						// }
+						//This returns the array of NAMES of people who want to swap 
+						//console.log(users[j].length);
+
+						for(var j = 0; j < users.length; j++){
+							secondPersonNames.push(users[j].firstName);
+						}
+
+						//console.log(allProducts);
+						// console.log("This is from users: ")
+						// console.log(users);
+
+						res.render('userView', {allProducts: allProducts, secondPersonNames: users, swappings: swappings});
 
 					});
-
-				res.render('userView', {allProducts: allProducts});
-
 			});
 
 		});
 
+	// res.render('userView');
+	// {allProducts: allProducts, secondPersonNames: users});
+
 });
-
-
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

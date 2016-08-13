@@ -82,7 +82,7 @@
           <div id="username">
 
           {{#with LoggedUser}}
-          <h2>Welcome, {{firstName}}!</h2>
+          <h2>Welcome, {{log firstName}}!</h2>
             <h5>Time to get swapping</h5>
             <br>
             <hr>
@@ -103,6 +103,7 @@
             <div class="col s12 m3">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
+
                   <img class="activator" src="{{imageURL}}">
                 </div>
                 <div class="card-content">
@@ -128,9 +129,15 @@
             <h5>Pending Swap Requests</h5>
           </div>
 
+
           <!-- Swapped Items -->
-          
+
+    {{!--       {{#each swappings}}
+                {{secondPersonProductID}}
+          {{/each}}
+ --}}
           <div class="row">
+          {{#each secondPersonNames}}
 
             <div class="col s12 m3">
 
@@ -138,12 +145,15 @@
 
                 <!--///we can show a picture of the item them own that they would like to swap with you/// -->
 
+
                 <div class="card-image">
-                  <img src="">
+                  <img src="{{../allProducts}}#{{../swappings.secondPersonProductID}}{{imageURL}}">
+
+
                 </div>
 
                 <div class="card-content">
-                  <p> [SecondUserName] would like to swap your [FirstUserItem] for their [SecondUserProduct]</p>
+                  <p> {{firstName}} would like to swap your [FirstUserItem] for their [SecondUserProduct]</p>
                 </div>
 
                 <div class="card-action">
@@ -156,7 +166,9 @@
 
             </div>
 
+          {{/each}}
           </div>
+
 
 
       <!-- Swap Modal Structure -->
