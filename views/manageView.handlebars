@@ -69,7 +69,7 @@
           <ul class="links">
             <li><a class="modal-trigger" href="#postAProduct">Post Product</a></li>
             <li><a class="torequests" href="#swapped">Swap Requests</a></li>
-            <li><a href="#swapStore">Swap Store</a></li>
+            <li><a id ="swapStore" href="/">Swap Store</a></li>
           
           </ul>
           </blockquote>
@@ -485,6 +485,8 @@
           $(".with-gap").prop('checked',false);
       });
 
+
+
       $("#logout").click(function(event){
           event.preventDefault();
          
@@ -500,8 +502,6 @@
 
           //   return false;
           // };
-
-
           // $('#postProduct').on("click", function() {
           //   var userInput = {
           //     product_name: $('#product_name').val().trim(),

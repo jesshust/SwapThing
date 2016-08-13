@@ -142,9 +142,10 @@ router.get('/users/:id?', function(req, res){
 
 
 router.get('/manageView', function (req, res){
-	// if(!cookies.email && !cookies.id){
-	// 	return res.redirect("/");
-	// }
+	cookies = cookie.parse(req.headers.cookie || '');
+	if(!cookies.email && !cookies.id){
+		return res.redirect("/");
+	}
 	models.Users.findAll().then(function (data) {
 		res.render('manageView', {Users : data});
 	});
@@ -201,8 +202,7 @@ router.post('/login', function(req, res){
 				if(password === result.password){
 					setEmailCookie = cookie.serialize('email', email);
 					setIdCookie = cookie.serialize('id', result.id);
-					res.setHeader("Set-Cookie", setEmailCookie); 
-					
+					res.setHeader("Set-Cookie", setEmailCookie); 				
 					res.append("Set-Cookie", setIdCookie);
 					var hash = '/users/'+result.id;
 					res.json({url: hash});
