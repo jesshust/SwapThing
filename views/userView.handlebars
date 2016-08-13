@@ -55,10 +55,12 @@
     <div class="row">
 
       <!-- Sidebar Navigation (image) -->
+      {{#with loggedUser}}
+
       <div class="col l2">
         <div class="toc-wrapper pin-top" style="top: 0px;">
 
-          <img src="http://placehold.it/150x150" class="circle responsive-img">
+          <img src="{{userImage}}" class="circle responsive-img">
 
           <!-- Side Navigation Links  -->
           <br>
@@ -80,8 +82,7 @@
           <!-- NAME here -->
           <div id="username">
 
-          {{#with LoggedUser}}
-          <h2>Welcome, {{log firstName}}!</h2>
+          <h2>Welcome, {{firstName}}!</h2>
             <h5>Time to get swapping</h5>
             <br>
             <hr>

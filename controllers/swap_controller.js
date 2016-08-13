@@ -71,7 +71,20 @@ router.post('/api/newproduct', function(req, res) {
 router.get('/users/:id?', function(req, res){
 	var userID = req.params.id;
 
-	models.Products.findAll()
+	models.Users.findOne({ where: {id: userID} }).then(function (loggedUser){
+
+	models.Products.findAll({
+  			where: {
+  				'UsersId': 
+  				{
+  					ne: userID
+  				},
+  				'swapStatus':
+  				{
+  					ne: 1
+  				}
+  			}
+  		})
 		.then(function(allProducts){
 
 			models.Swappings.findAll(
@@ -118,12 +131,14 @@ router.get('/users/:id?', function(req, res){
 						}
 					}
 
-					res.render('userView', {allProducts: notMyProducts, secondPersonNames: secondPersonNames, swappedObjects: swappedObjects});
+					res.render('userView', {allProducts: notMyProducts, secondPersonNames: secondPersonNames, swappedObjects: swappedObjects, loggedUser: loggedUser});
 
 				});
 			});
 
 		});
+
+	});
 
 });
 
