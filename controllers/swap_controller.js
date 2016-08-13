@@ -71,15 +71,7 @@ router.post('/api/newproduct', function(req, res) {
 router.get('/users/:id?', function(req, res){
 	var userID = 1;
 
-	models.Products.findAll(
-		{
-			where: {
-				'UsersId': 
-				{
-					ne: userID
-				}
-			}
-		})
+	models.Products.findAll()
 		.then(function(allProducts){
 
 			models.Swappings.findAll(
@@ -103,24 +95,20 @@ router.get('/users/:id?', function(req, res){
 					secondPersonProductIDs.push(swappings[i].secondPersonProductID);
 				}
 
+
 				// console.log("this is from second person product ids: "); 
 				// console.log(secondPersonProductIDs);
 
-				//var swappedObjects = [];
+				var swappedObjects = [];
 
-				// for(var k = 0; k < secondPersonProductIDs.length; k++){
+				for(var k = 0; k < secondPersonProductIDs.length; k++){
 
-				// 	var nowProduct = parseInt(secondPersonProductIDs[k]);
+					var nowProduct = secondPersonProductIDs[k];
+					swappedObjects.push(allProducts[nowProduct - 1]);
 
-				// 	// console.log("This is from nowProduct: ");
-				// 	// console.log(nowProduct);
+				}
 
-				// 	swappedObjects.push(allProducts.nowProduct);
-				// 	// console.log(nowProduct);
-				// 	// console.log(swappedObjects);
-
-				// }
-
+				console.log(swappedObjects);
 
 				//This returns the array of USER IDs who want to swap w/FirstPerson
 				//console.log(secondPersonIDs);
@@ -150,7 +138,7 @@ router.get('/users/:id?', function(req, res){
 						// console.log("This is from users: ")
 						// console.log(users);
 
-						res.render('userView', {allProducts: allProducts, secondPersonNames: users, swappings: swappings});
+						res.render('userView', {allProducts: allProducts, secondPersonNames: users, swappedObjects: swappedObjects});
 
 					});
 			});

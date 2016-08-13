@@ -25,10 +25,10 @@ module.exports = function(sequelize, DataTypes) {
           Swappings = this.sequelize.define('Swappings', {});
 
         Swappings.belongsToMany(Users, {through: 'SwapUser'});
-        Users.belongsToMany(Swapping, {through: 'SwapUser'});
+        Users.belongsToMany(Swappings, {through: 'SwapUser'});
 
         Swappings.belongsToMany(Products, {through: 'SwapProduct'});
-        Products.belongsToMany(Swapping, {through: 'SwapProduct'});
+        Products.belongsToMany(Swappings, {through: 'SwapProduct'});
 
       }
     }
