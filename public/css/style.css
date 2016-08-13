@@ -139,14 +139,18 @@ a:hover {
 ul li {
 	padding-bottom: 5px;
 	padding-top: 5px;
-	text-align: center;
 }
 
 li:hover {
     background-color: #2D3047;
+    text-align: center;
 }
 
 a {
 	color:#1b998B;
+}
+
+.bluebg {
+	background-image: url("https://raw.githubusercontent.com/kaylaludmila/SwapThing/master/public/css/imgs/bgblue.jpg");
 }
 
