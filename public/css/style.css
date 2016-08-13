@@ -150,7 +150,7 @@ a {
 	color:#1b998B;
 }
 
-/*.bluebg {
-	background-image: "./imgs/bgblue.jpg";
-}*/
+.bluebg {
+	background-image: url("https://raw.githubusercontent.com/kaylaludmila/SwapThing/master/public/css/imgs/bgblue.jpg");
+}
 
