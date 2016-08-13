@@ -20,10 +20,15 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        var Products = this.sequelize.define('Products', {}),
+          Users = this.sequelize.define('Users', {}),
+          Swappings = this.sequelize.define('Swappings', {});
 
-        //products belongs to both swappings and users
+        Swappings.belongsToMany(Users, {through: 'SwapUser'});
+        Users.belongsToMany(Swapping, {through: 'SwapUser'});
 
+        Swappings.belongsToMany(Products, {through: 'SwapProduct'});
+        Products.belongsToMany(Swapping, {through: 'SwapProduct'});
 
       }
     }

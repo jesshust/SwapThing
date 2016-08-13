@@ -142,9 +142,9 @@ router.get('/users/:id?', function(req, res){
 
 
 router.get('/manageView', function (req, res){
-	if(!cookies.email && !cookies.id){
-		return res.redirect("/");
-	}
+	// if(!cookies.email && !cookies.id){
+	// 	return res.redirect("/");
+	// }
 	models.Users.findAll().then(function (data) {
 		res.render('manageView', {Users : data});
 	});
