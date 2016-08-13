@@ -114,14 +114,12 @@
                   <span class="card-title grey-text text-darken-4">{{product_name}}<i class="material-icons right">close</i></span>
                   <p>Item category: {{category}}</p>
                   <p>Product description: {{description}}</p>
-                  <p>Amount of use: {{scale_rating}}</p>
-
-                  {{!-- <p>Sold By: {{firstName}}</p> --}}
+                  <p>Amount of use: {{scaleRating}}</p>
 
                 </div>
               </div>
-
             {{/each}}
+
             </div>
 
 
@@ -132,12 +130,7 @@
 
           <!-- Swapped Items -->
 
-    {{!--       {{#each swappings}}
-                {{secondPersonProductID}}
-          {{/each}}
- --}}
           <div class="row">
-          {{#each secondPersonNames}}
 
             <div class="col s12 m3">
 
@@ -147,13 +140,13 @@
 
 
                 <div class="card-image">
-                  <img src="{{../allProducts}}#{{../swappings.secondPersonProductID}}{{imageURL}}">
+                  <img src="../css/imgs/placeholder/desk.jpg">
 
 
                 </div>
 
                 <div class="card-content">
-                  <p> {{firstName}} would like to swap your [FirstUserItem] for their [SecondUserProduct]</p>
+                  <p> Brian would like to swap!</p>
                 </div>
 
                 <div class="card-action">
@@ -166,8 +159,36 @@
 
             </div>
 
-          {{/each}}
-          </div>
+          {{!-- Card 2 --}}
+
+           <div class="row">
+
+            <div class="col s12 m3">
+
+              <div class="card">
+
+                <!--///we can show a picture of the item them own that they would like to swap with you/// -->
+
+
+                <div class="card-image">
+                  <img src="../css/imgs/placeholder/polaroid_camera.jpg">
+
+
+                </div>
+
+                <div class="card-content">
+                  <p> Dee would like to swap!</p>
+                </div>
+
+                <div class="card-action">
+                  <a class= "modal-trigger blueClick" href="#congrats">Accept Swap</a>
+                  <br>
+                  <a class="modal-trigger" href="#reject">Reject Swap</a>
+                </div>
+
+              </div>
+
+            </div>
 
 
       <!-- Swap Modal Structure -->
@@ -186,7 +207,7 @@
               <div class="input-field col s12 l5">
                 <select class="icons">
                   <option value="" selected>What's it worth trading for?</option>
-                  <option value="1" data-icon="../css/imgs/placeholder/desk.jpg" class="left circle data-icon">Desk</option>
+                  <option value="1" data-icon="../css/imgs/placeholder/bike_img.jpg" class="left circle data-icon">Bike</option>
                   <option value="2" data-icon="../css/imgs/placeholder/makeuppalette.jpg" class="left circle data-icon">MakeUp Palette</option>
                   <option value="3" data-icon="../css/imgs/placeholder/polaroid_camera.jpg" class="left circle data-icon">Polaroid Camera</option>
                 </select>

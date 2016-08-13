@@ -111,7 +111,6 @@ router.get('/users/:id?', function(req, res){
 
 					var nowProduct = secondPersonProductIDs[k];
 					swappedObjects.push(allProducts[nowProduct - 1]);
-
 				}
 
 				models.Users.findAll(
@@ -123,15 +122,8 @@ router.get('/users/:id?', function(req, res){
 					}
 				).then(function(secondPersonNames){
 
-					var notMyProducts = [];
 
-					for(var i = 0; i < allProducts.length; i++) {
-						if(allProducts[i].UsersId !== userID) {
-							notMyProducts.push(allProducts[i]);
-						}
-					}
-
-					res.render('userView', {allProducts: notMyProducts, secondPersonNames: secondPersonNames, swappedObjects: swappedObjects, loggedUser: loggedUser});
+					res.render('userView', {allProducts: allProducts, secondPersonNames: secondPersonNames, swappedObjects: swappedObjects, loggedUser: loggedUser});
 
 				});
 			});
