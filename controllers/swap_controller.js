@@ -69,7 +69,7 @@ router.post('/api/newproduct', function(req, res) {
 //++++++++++++++THIS IS ALL THE ASSOCIATIONS++++++++++++++++
 
 router.get('/users/:id?', function(req, res){
-	var userID = req.params.id;
+	var userID = 1;
 
 	models.Users.findOne({ where: {id: userID} }).then(function (loggedUser){
 
@@ -95,45 +95,44 @@ router.get('/users/:id?', function(req, res){
 				}
 			).then(function(swappings){
 
+				//This returns the # of swaps "first person ID" has
+				//console.log(swappings.length);
+
 				var secondPersonIDs = [];
 				var secondPersonProductIDs = [];
 				var firstPersonProductIDs = [];
 
 				for(var i = 0; i < swappings.length; i++){
-					secondPersonIDs.push(swappings[i].secondPersonID);
-					firstPersonProductIDs.push(swappings[i].firstPersonProductID);
-					secondPersonProductIDs.push(swappings[i].secondPersonProductID);
+				secondPersonIDs.push(swappings[i].secondPersonID);
+				firstPersonProductIDs.push(swappings[i].firstPersonProductID);
+				secondPersonProductIDs.push(swappings[i].secondPersonProductID);
 				}
 
-				var swappedObjects = [];
+				//This returns the array of USER IDs who want to swap w/FirstPerson
+				//console.log(secondPersonIDs);
 
-				for(var k = 0; k < secondPersonProductIDs.length; k++){
+				//This returns the array of PRODUCT IDs second persons want to swap 
+				//console.log(secondPersonProductIDs);
 
-					var nowProduct = secondPersonProductIDs[k];
-					swappedObjects.push(allProducts[nowProduct - 1]);
-
-				}
-
-				models.Users.findAll(
-					{
-						where: {
-							'id': 
-								{in: secondPersonIDs}
+					models.Users.findAll(
+						{
+							where: {
+								'id': 
+									{in: secondPersonIDs}
+							}
 						}
-					}
-				).then(function(secondPersonNames){
+					).then(function(users){
 
-					var notMyProducts = [];
+						console.log("this is from users.length: ")
+						console.log(users.length);
 
-					for(var i = 0; i < allProducts.length; i++) {
-						if(allProducts[i].UsersId !== userID) {
-							notMyProducts.push(allProducts[i]);
-						}
-					}
+						// for(var j = 0; j < users.length; j++){
+						// 	console.log("This is from Users: ")
+						// 	console.log(users.dataValues.firstName);
+						// }
 
 					res.render('userView', {allProducts: notMyProducts, secondPersonNames: secondPersonNames, swappedObjects: swappedObjects, loggedUser: loggedUser});
 
-				});
 			});
 
 		});
@@ -141,6 +140,8 @@ router.get('/users/:id?', function(req, res){
 	});
 
 });
+
+
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
