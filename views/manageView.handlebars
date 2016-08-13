@@ -46,7 +46,7 @@
                     </div>
                   </form>
                 </div>
-          <li><a href="#">Logout</a></li>
+          <li><a id="logout" href="#">Logout</a></li>
           </li>
       </ul>
     </div>
@@ -69,7 +69,7 @@
           <ul class="links">
             <li><a class="modal-trigger" href="#postAProduct">Post Product</a></li>
             <li><a class="torequests" href="#swapped">Swap Requests</a></li>
-            <li><a href="#swapStore">Swap Store</a></li>
+            <li><a id ="swapStore" href="/">Swap Store</a></li>
           </ul>
           </blockquote>
 
@@ -483,6 +483,17 @@
           $('#imageURL').val('');
           $(".with-gap").prop('checked',false);
       });
+
+
+
+      $("#logout").click(function(event){
+          event.preventDefault();
+         
+          var currentURL = window.location.origin; 
+          $.get(currentURL + "/logout").then(function(){
+            window.location = "/";
+          });
+      });
           //   $('#swapStore').on("click", function() {
 
           //     window.location.replace("/users/" + data.email);
@@ -490,8 +501,6 @@
 
           //   return false;
           // };
-
-
           // $('#postProduct').on("click", function() {
           //   var userInput = {
           //     product_name: $('#product_name').val().trim(),
