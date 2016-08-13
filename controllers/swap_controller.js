@@ -69,7 +69,7 @@ router.post('/api/newproduct', function(req, res) {
 //++++++++++++++THIS IS ALL THE ASSOCIATIONS++++++++++++++++
 
 router.get('/users/:id?', function(req, res){
-	var userID = 1;
+	var userID = req.params.id;
 
 	models.Products.findAll()
 		.then(function(allProducts){
@@ -82,9 +82,6 @@ router.get('/users/:id?', function(req, res){
 				}
 			).then(function(swappings){
 
-				//This returns the # of swaps "first person ID" has
-				//console.log(swappings.length);
-
 				var secondPersonIDs = [];
 				var secondPersonProductIDs = [];
 				var firstPersonProductIDs = [];
@@ -95,10 +92,6 @@ router.get('/users/:id?', function(req, res){
 					secondPersonProductIDs.push(swappings[i].secondPersonProductID);
 				}
 
-
-				// console.log("this is from second person product ids: "); 
-				// console.log(secondPersonProductIDs);
-
 				var swappedObjects = [];
 
 				for(var k = 0; k < secondPersonProductIDs.length; k++){
@@ -108,45 +101,29 @@ router.get('/users/:id?', function(req, res){
 
 				}
 
-				console.log(swappedObjects);
-
-				//This returns the array of USER IDs who want to swap w/FirstPerson
-				//console.log(secondPersonIDs);
-
-				//This returns the array of PRODUCT IDs second persons want to swap 
-				//console.log(secondPersonProductIDs);
-
-					models.Users.findAll(
-						{
-							where: {
-								'id': 
-									{in: secondPersonIDs}
-							}
+				models.Users.findAll(
+					{
+						where: {
+							'id': 
+								{in: secondPersonIDs}
 						}
-					).then(function(users){
+					}
+				).then(function(secondPersonNames){
 
-						var secondPersonNames = [];
+					var notMyProducts = [];
 
-						//This returns the array of NAMES of people who want to swap 
-						//console.log(users[j].length);
-
-						for(var j = 0; j < users.length; j++){
-							secondPersonNames.push(users[j].firstName);
+					for(var i = 0; i < allProducts.length; i++) {
+						if(allProducts[i].UsersId !== userID) {
+							notMyProducts.push(allProducts[i]);
 						}
+					}
 
-						//console.log(allProducts);
-						// console.log("This is from users: ")
-						// console.log(users);
+					res.render('userView', {allProducts: notMyProducts, secondPersonNames: secondPersonNames, swappedObjects: swappedObjects});
 
-						res.render('userView', {allProducts: allProducts, secondPersonNames: users, swappedObjects: swappedObjects});
-
-					});
+				});
 			});
 
 		});
-
-	// res.render('userView');
-	// {allProducts: allProducts, secondPersonNames: users});
 
 });
 
